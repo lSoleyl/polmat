@@ -4,6 +4,7 @@
     <script src="./js/jquery-2.1.4.js"></script>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/polmat.css">
+    <link rel="stylesheet" href="./css/polmat-print.css" media="print">
 
     <script src="./js/random.js"></script>
     <script src="./js/excerciseData.js"></script>
@@ -66,6 +67,12 @@
         reloadVariables()
       })
 
+      $('#new-seed').click(function() {
+        $('#seed').val((new Date()).getTime())
+        cookieValue($('#seed').val())
+        reloadVariables()
+      })
+
       reloadVariables()
     })
 
@@ -74,12 +81,19 @@
   </head>
   <body>
     <div class="container">
+      <!-- Header/Config -->
       <div class="form-group form-inline">
         <label>Seed</label>
-        <input type="text" value="" class="form-control" id="seed"/>
-        <input type="button" class="btn btn-default" value="Aufgaben neu berechnen" id="recalc">
+        <div class="input-group">
+          <div class="input-group-addon hoverGrey no-select dont-print" id="new-seed">Neu</div>
+          <input type="text" value="" class="form-control" id="seed">
+        </div>
+        <input type="button" class="btn btn-default dont-print" value="Aufgaben neu berechnen" id="recalc">
       </div>
-      <div>
+
+
+      <!-- Actual content -->
+      <div class="page">
         <h2>Aufgaben</h2>
 
         <h3>Aufgabe 1</h3>
@@ -87,7 +101,11 @@
           Ein Motoroller verbraucht <var name="usage"></var> Liter Benzin auf <const name="100km"></const> km. Wie viel verbraucht er auf <var name="distance"></var> km und wie viele Kilometer kann er mit einem <var name="fuel"></var> Liter fassenden Tank fahren?
         </div>
       </div>
-      <div>
+
+
+
+      <!-- solutions -->
+      <div class="page">
         <h2>Lösungen</h2>
         <div ex=1>
           <mid>a)</mid>

@@ -27,3 +27,22 @@
 .center {
   vertical-align:10px;
 }
+
+.no-select {
+  -moz-user-select: none; 
+  -khtml-user-select: none; 
+  -webkit-user-select: none; 
+  -o-user-select: none; 
+}
+
+.hoverGrey {
+  background-color: #ffffff;
+}
+
+.hoverGrey:hover {
+  background-color: #e6e6e6;
+}
+
+.page {
+  page-break-after: always;
+}
