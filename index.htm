@@ -96,100 +96,176 @@
       <div class="page">
         <h2>Aufgaben</h2>
 
-        <h3>Aufgabe 1</h3>
+        
         <div ex=1> <!-- Excercise 1 -->
+          <h3>Aufgabe 1</h3>
           Ein Motoroller verbraucht <var name="usage"></var> Liter Benzin auf <const name="100km"></const> km. Wie viel verbraucht er auf <var name="distance"></var> km und wie viele Kilometer kann er mit einem <var name="fuel"></var> Liter fassenden Tank fahren?
+        </div>
+
+        <div ex=2>
+          <h3>Aufgabe 2</h3>
+          Ein Malergeselle renoviert ein Zimmer von <var name="mg"></var>m² an einem Arbeitstag (<const name="workday"></const> Stunden). Der Azubi schafft in dieser Zeit nur <span class="variable">1/<var name="azubiF"></var></span> dieser Arbeitsleistung. Der Meister arbeitet noch schneller als der Geselle und liegt damit <var name="masterP"></var>% höher in der Arbeitsleistung. Wie hoch ist die Differenz der geleisteten Arbeit (renovierter Raum in m²) zwischen bestem und schlechtestem Ergebnis nach <var name="workdays"></var> Arbeitstagen?
+
         </div>
       </div>
 
 
 
       <!-- solutions -->
+      <hr class="dont-print">
       <div class="page">
         <h2>Lösungen</h2>
         <div ex=1>
-          <mid>a)</mid>
-          <frac>
-            <top>
-              <var name="usage"></var>L
-            </top>
-            <bottom>
-              <const name="100km"></const>km
-            </bottom>
-          </frac>
+          <h3>Aufgabe 1</h3>
+          <div>
+            <mid>a)</mid>
+            <frac>
+              <top>
+                <var name="usage"></var>L
+              </top>
+              <bottom>
+                <const name="100km"></const>km
+              </bottom>
+            </frac>
 
-          <mid> &middot; <var name="distance"></var>km</mid>
+            <mid> &middot; <var name="distance"></var>km</mid>
 
-          <input class="eq">
+            <input class="eq">
 
-          <mid>
-            <var name="usage"></var>L &middot;
-          </mid>
-          <frac>
-            <top>
-              <var name="distance"></var>km
-            </top>
-            <bottom>
-              <const name="100km"></const>km
-            </bottom>
-          </frac>
+            <mid>
+              <var name="usage"></var>L &middot;
+            </mid>
+            <frac>
+              <top>
+                <var name="distance"></var>km
+              </top>
+              <bottom>
+                <const name="100km"></const>km
+              </bottom>
+            </frac>
 
-          <input class="eq">
-         
-          <mid>
-            <var name="usage"></var>L &middot; <var name="res0"></var>
-          </mid>
+            <input class="eq">
+           
+            <mid>
+              <var name="usage"></var>L &middot; <var name="res0"></var>
+            </mid>
 
-          <input class="eq">
+            <input class="eq">
 
-          <mid><u><var name="res1"></var>L</u> (Verbrauch auf <var name="distance"></var>km)</mid>
+            <mid><u><var name="res1"></var>L</u> (Verbrauch auf <var name="distance"></var>km)</mid>
+          </div>
+          <div>
+            <mid>b)</mid>
+            <frac>
+              <top>
+                <var name="usage"></var>L
+              </top>
+              <bottom>
+                <const name="100km"></const>km
+              </bottom>
+            </frac>
+
+            <input class="eq">
+
+            <frac>
+              <top>
+                <var name="fuel"></var>L
+              </top>
+              <bottom>
+                <var>X</var> km
+              </bottom>
+            </frac>
+
+            <input class="equiv">
+
+            <mid><var>X</var></mid>
+
+            <input class="eq">
+
+            <frac>
+              <top>
+                <var name="fuel"></var>L &middot; <const name="100km"></const>km
+              </top>
+              <bottom>
+                <var name="usage"></var>L
+              </bottom>
+            </frac>
+
+            <input class="eq">
+
+            <mid><var name="res2"></var> &middot; <const name="100km"></const>km</mid>
+
+            <input class="eq">
+
+            <mid><var name="res3"></var>km (Reichweite bei einer Tankfüllung von <var name="fuel"></var>L)</mid>
+          </div>
         </div>
-        <div ex=1>
-          <mid>b)</mid>
-          <frac>
-            <top>
-              <var name="usage"></var>L
-            </top>
-            <bottom>
-              <const name="100km"></const>km
-            </bottom>
-          </frac>
 
-          <input class="eq">
+        <div ex=2> <!-- Exercise 2 -->
+          <h3>Aufgabe 2</h3>
+          Zuerst Arbeitsleistung von Azubi (schlechteste Leistung) und Meister (beste Leistung) pro Arbeitstag (=<const name="workday"></const> h) anhand der Informationen über den Gesellen bestimmen:
+          <div> <!-- Malegeselle -->
+            <mid>Geselle</mid>
+            <input class="eq">
+            <frac>
+              <top>
+                <var name="mg"></var>m²
+              </top>
+              <bottom>
+                <const name="workday"></const>h
+              </bottom>
+            </frac>
+          </div>
+          <div> <!-- Azubi -->
+            <mid>Azubi</mid> 
+            <input class="eq">
+            <frac class="variable">
+              <top>1</top>
+              <bottom><var name="azubiF"></var></bottom>
+            </frac>
+            <mid> &middot; Geselle</mid>
 
-          <frac>
-            <top>
-              <var name="fuel"></var>L
-            </top>
-            <bottom>
-              <var>X</var> km
-            </bottom>
-          </frac>
+            <input class="eq">
+            <frac class="variable">
+              <top>1</top>
+              <bottom><var name="azubiF"></var></bottom>
+            </frac>
+            <mid>&middot;</mid>
+            <frac>
+              <top>
+                <var name="mg"></var>m²
+              </top>
+              <bottom>
+                <const name="workday"></const>h
+              </bottom>
+            </frac>
+            ... TODO
+          </div> <!-- TODO Kürzen und Zusammenrechnen -->
+          <div>
+            <mid>Meister</mid>
+            <input class="eq">
+            <mid>Geselle + <var name="masterP"></var>%</mid>
+            <input class="eq">
+            <mid>Geselle + </mid>
+            <frac>
+            <top><var name="masterP"></var></top>
+            <bottom>100</bottom>
+            </frac>
+            <mid>&middot; Geselle</mid>
 
-          <input class="equiv">
+            <input class="eq">
 
-          <mid><var>X</var></mid>
-
-          <input class="eq">
-
-          <frac>
-            <top>
-              <var name="fuel"></var>L &middot; <const name="100km"></const>km
-            </top>
-            <bottom>
-              <var name="usage"></var>L
-            </bottom>
-          </frac>
-
-          <input class="eq">
-
-          <mid><var name="res2"></var> &middot; <const name="100km"></const>km</mid>
-
-          <input class="eq">
-
-          <mid><var name="res3"></var>km (Reichweite bei einer Tankfüllung von <var name="fuel"></var>L)</mid>
+            <frac>
+              <top><var name="masterZ"></var></top>
+              <bottom>100</bottom>
+            </frac>
+            <mid>&middot; Geselle</mid>
 
 
+            ... TODO
+
+
+          </div>
         </div>
       </div>
     </div>
