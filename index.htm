@@ -15,10 +15,12 @@
     <script>
     function cookieValue(value) {
       if (!value) { //Read access
-        if (document.cookie.search('seed=') == -1)
+        var seedStr = document.cookie.split(';').find(function(x) { return x.search("seed=") != -1 })
+
+        if (!seedStr)
           return null
         else 
-          document.cookie.substr('seed='.length) //This assumes that the seed cookie is the only one
+          return seedStr.substr("seed=".length)
       } else {
         document.cookie = 'seed=' + value
       }
