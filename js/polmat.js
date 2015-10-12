@@ -39,6 +39,8 @@ $(function() {
   $("frac").each(function(i, element) {
     var frac = $(element)
     var replace = $('<span class="fraction"></span>')
+    if (frac.attr('class')) 
+      replace.addClass(frac.attr('class'))
     replace.html(frac.html()) //Copy content from top element
     frac.replaceWith(replace)
   })  
