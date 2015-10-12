@@ -1,0 +1,29 @@
+.constant {
+  font-weight: bold;
+  color: #cc5500;
+}
+
+.variable {
+  font-weight: bold;
+  color: #cc5500;
+}
+
+
+
+.fraction, .top, .bottom {
+    padding: 0 5px;    
+}
+
+.fraction {
+    display: inline-block;
+    text-align: center;    
+}
+
+.bottom{
+    border-top: 1px solid #000;
+    display: block;
+}
+
+.center {
+  vertical-align:10px;
+}

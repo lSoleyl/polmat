@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="./js/jquery-2.1.4.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/polmat.css">
+
+    <script src="./js/random.js"></script>
+    <script src="./js/excerciseData.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <script src="./js/polmat.js"></script>
+    <title>Polizeitest - Mathe Textaufgaben</title>
+
+    <script>
+    function cookieValue(value) {
+      if (!value) { //Read access
+        if (document.cookie.search('seed=') == -1)
+          return null
+        else 
+          document.cookie.substr('seed='.length) //This assumes that the seed cookie is the only one
+      } else {
+        document.cookie = 'seed=' + value
+      }
+    }
+
+
+
+
+    function reloadVariables() {
+      var seed = parseInt($("#seed").val())
+      document.reloadVars(seed)
+
+      $("span.variable[name]").each(function(i,element) { //Update values
+        var varSpan = $(element)
+        var div = varSpan.closest("div[ex]")
+        if (!div) {
+          console.error("Missing parent excercise div for following element:")
+          console.log(element)
+        } else {
+          var excercise = div.attr('ex')
+          var varName = varSpan.attr('name')
+          varSpan.text(document.variables[excercise][varName])
+        }
+      })
+
+      $("span.constant[name]").each(function(i,element) { //Set constants
+        var constSpan = $(element)
+        var varName = constSpan.attr('name')
+
+        constSpan.text(document.constants[varName])
+      })
+    }
+
+
+
+    $(function() {
+      //Set seed value: cookie or current time
+      $('#seed').val(cookieValue() || (new Date()).getTime())
+      cookieValue($('#seed').val())
+
+      $('#recalc').click(function() {
+        cookieValue($('#seed').val())
+        reloadVariables()
+      })
+
+      reloadVariables()
+    })
+
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-group form-inline">
+        <label>Seed</label>
+        <input type="text" value="" class="form-control" id="seed"/>
+        <input type="button" class="btn btn-default" value="Aufgaben neu berechnen" id="recalc">
+      </div>
+      <div>
+        <h2>Aufgaben</h2>
+
+        <h3>Aufgabe 1</h3>
+        <div ex=1> <!-- Excercise 1 -->
+          Ein Motoroller verbraucht <var name="usage"></var> Liter Benzin auf <const name="100km"></const> km. Wie viel verbraucht er auf <var name="distance"></var> km und wie viele Kilometer kann er mit einem <var name="fuel"></var> Liter fassenden Tank fahren?
+        </div>
+      </div>
+      <div>
+        <h2>Lösungen</h2>
+        <div ex=1>
+          <mid>a)</mid>
+          <frac>
+            <top>
+              <var name="usage"></var>L
+            </top>
+            <bottom>
+              <const name="100km"></const>km
+            </bottom>
+          </frac>
+
+          <mid> &middot; <var name="distance"></var>km</mid>
+
+          <input class="eq">
+
+          <mid>
+            <var name="usage"></var>L &middot;
+          </mid>
+          <frac>
+            <top>
+              <var name="distance"></var>km
+            </top>
+            <bottom>
+              <const name="100km"></const>km
+            </bottom>
+          </frac>
+
+          <input class="eq">
+         
+          <mid>
+            <var name="usage"></var>L &middot; <var name="res0"></var>
+          </mid>
+
+          <input class="eq">
+
+          <mid><u><var name="res1"></var>L</u> (Verbrauch auf <var name="distance"></var>km)</mid>
+        </div>
+        <div ex=1>
+          <mid>b)</mid>
+          <frac>
+            <top>
+              <var name="usage"></var>L
+            </top>
+            <bottom>
+              <const name="100km"></const>km
+            </bottom>
+          </frac>
+
+          <input class="eq">
+
+          <frac>
+            <top>
+              <var name="fuel"></var>L
+            </top>
+            <bottom>
+              <var>X</var> km
+            </bottom>
+          </frac>
+
+          <input class="equiv">
+
+          <mid><var>X</var></mid>
+
+          <input class="eq">
+
+          <frac>
+            <top>
+              <var name="fuel"></var>L &middot; <const name="100km"></const>km
+            </top>
+            <bottom>
+              <var name="usage"></var>L
+            </bottom>
+          </frac>
+
+          <input class="eq">
+
+          <mid><var name="res2"></var> &middot; <const name="100km"></const>km</mid>
+
+          <input class="eq">
+
+          <mid><var name="res3"></var>km (Reichweite bei einer Tankfüllung von <var name="fuel"></var>L)</mid>
+
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
