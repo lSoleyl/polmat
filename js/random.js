@@ -19,7 +19,17 @@ Math.opRand = function(options) {
   var max = options.max || 1
   var step = options.step || 1
 
+  if (Array.isArray(options)) { //Select random element from array
+    min = 0
+    max = options.length - 1
+    step = 1
+  }
+  
   var delta = (max - min) / step
 
-  return (parseInt(Math.seededRandom(delta+1, 0)) * step + min)
+  var result = parseInt(Math.seededRandom(delta+1, 0)) * step + min
+  if (Array.isArray(options))
+    return options[result]
+  else
+    return result
 }
