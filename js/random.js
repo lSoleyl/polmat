@@ -26,6 +26,9 @@ Math.opRand = function(options) {
   }
   
   var delta = (max - min) / step
+  
+  if (delta < 1)
+    return min
 
   var result = parseInt(Math.seededRandom(delta+1, 0)) * step + min
   if (Array.isArray(options))

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/polmat-print.css" media="print">
     <script src="./js/smath.js"></script>
     <script src="./js/random.js"></script>
-    
+
     <script src="./js/excerciseData.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 
@@ -107,6 +107,13 @@
           <h3>Aufgabe 2</h3>
           Ein Malergeselle renoviert ein Zimmer von <var name="mg"></var>m² an einem Arbeitstag (<const name="workday"></const> Stunden). Der Azubi schafft in dieser Zeit nur <span class="variable">1/<var name="azubiF"></var></span> dieser Arbeitsleistung. Der Meister arbeitet noch schneller als der Geselle und liegt damit <var name="masterP"></var>% höher in der Arbeitsleistung. Wie hoch ist die Differenz der geleisteten Arbeit (renovierter Raum in m²) zwischen bestem und schlechtestem Ergebnis nach <var name="workdays"></var> Arbeitstagen?
 
+        </div>
+
+        <div ex=3>
+          <h3>Aufgabe 3</h3>
+          Ein Händer kauft für <var name="m0"></var>€ Gewürzpartien. An jeder verkauften Gewürzpartie verdient er 
+          <var name="unitprofit"></var>€ (Gewinn). Nach Verkauf seines Gesamtbestandes hat er <var name="m1"></var>€ eingenommen.
+          Wie viele Gewürzpartien hatte er?
         </div>
       </div>
 
@@ -329,6 +336,38 @@
           </div>
           <div>
           Der Meister schafft innerhalb von <var name="workdays"></var> Arbeitstagen <var name="result"></var>m² mehr als der Azubi.
+          </div>
+        </div>
+
+        <div ex=3> <!-- Excercise 3 -->
+          <h3>Aufgabe 3</h3>
+          <div>
+            <mid>Gewinn</mid>
+            <input class="eq">
+            <mid>Erlös - Kosten</mid>
+            <input class="eq">
+            <mid><var name="m1"></var>€ - <var name="m0"></var>€</mid>
+            <input class="eq">
+            <mid><var name="totalprofit"></var>€</mid>
+          </div>
+          <div>
+            <mid>Verkaufte Waren</mid>
+            <input class=eq>
+            <frac>
+              <top>Gewinn</top>
+              <bottom>Gewinn pro Ware</bottom>
+            </frac>
+            <input class=eq>
+            <frac>
+              <top><var name="totalprofit"></var>€</top>
+              <bottom><var name="unitprofit"></var>€</bottom>
+            </frac>
+            <input class="eq">
+            <mid><var name="units"></var></mid>
+          </div>
+          <div>
+          <br/>
+            Der Händer hat <var name="units"></var> Gewürzpartien gekauft und wieder verkauft
           </div>
         </div>
       </div>

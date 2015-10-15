@@ -40,6 +40,14 @@ document.variables = {
 
     'result':24.75
 
+  },
+
+  '3': {
+    'm0': 10500,
+    'm1': 14000,
+    'unitprofit':100,
+    'totalprofit':3500,
+    'units':35
   }
 }
 
@@ -99,5 +107,17 @@ document.reloadVars = function(seed) {
   ex.azubiR = ex.azubi * ex.workdays
   ex.masterR = document.smath.mul(ex.master,ex.workdays)
   ex.result = document.smath.sub(ex.masterR,ex.azubiR)
+
+
+  //Excercise 3
+  ex = vars['3']
+  ex.unitprofit = Math.opRand([10,20,50,100])
+  ex.units = Math.opRand({min:15, max:55, step:5})
+  ex.totalprofit = ex.units * ex.unitprofit
+
+  ex.m0 = Math.opRand({min:3*ex.totalprofit, max:5*ex.totalprofit, step:500})
+  ex.m1 = ex.m0 + ex.totalprofit
+
+
 
 }
