@@ -69,6 +69,25 @@ $(function() {
     iff.replaceWith(replace)
   })
 
+  $("ex").each(function(i,element) {
+    var e = $(element)
+    var nr = e.attr('nr')
+    var replace = $('<div></div>')
+    replace.attr({ex: nr})
+    replace.append($('<h3>Aufgabe ' + nr + '</h3>'))
+    var inner = $('<div></div>')
+    inner.html(e.html())
+    replace.append(inner)
+    e.replaceWith(replace)
+  })
+
+  $("page").each(function(i,element) {
+    var e = $(element)
+    var replace = $('<div class="page"></div>')
+    replace.html(e.html())
+    e.replaceWith(replace)
+  })
+
   $("input.equiv").replaceWith($('<span class="center">&nbsp;&nbsp;&nbsp;&nbsp;<=>&nbsp;&nbsp;&nbsp;&nbsp;</span>'))
 })
 
