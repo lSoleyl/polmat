@@ -6,21 +6,13 @@ document.smath = (function() {
    *  Only defined for integral numbers
    */
   function less(snum1, snum2) {
-    if (snum1 == snum2)
-      return false
-    else if (snum1.length < snum2.length)
-      return true
-    else if (snum1.length > snum2.length)
-      return false
-    else {
-      for(var c = 0; c < snum1.length; ++c) {
-        if (snum1[c] < snum2[c])
-          return true
-        else if (snum1[c] > snum2[c])
-          return false
-      }
-      throw "less comparison error"
-    }
+    return parseInt(snum1) < parseInt(snum2)
+  }
+
+  /** Less for all numbers
+   */
+  function less_decimal(snum1, snum2) {
+    return parseFloat(snum1) < parseFloat(snum2)
   }
 
   Array.prototype.reduce = function(fn) {
@@ -191,6 +183,13 @@ document.smath = (function() {
   }
 
 
+  function equalize_snums(snums) {
+    var maxdecimals = snums.map(decimal_places).max()
+    snums = snums.map(function(s) { return pad_decimals_to(s, maxdecimals) })
+    var maxLength = snums.map(function(s) { return s.length }).max()
+    return snums.map(function(s) { return pad_left_to(s, maxLength) })
+  }
+
   /** Normalizes the look of decimal numbers
    */
   function normalize(snum) {
@@ -216,11 +215,11 @@ document.smath = (function() {
   function snum(num) { return ''+num }
 
   function add_all(snums) {
-    var maxdecimals = snums.map(decimal_places).max()
-    snums = snums.map(function(s) { return pad_decimals_to(s,maxdecimals) })
-    var maxLength = snums.map(function(x) { return x.length }).max() + 3
-    //Pad to length + 3 for carry (should be enoug in most cases)
-    snums = snums.map(function(s) { return pad_left_to(s,maxLength) })
+    //Make all summands equal in length and pad 2 zeroes at front for carry
+    snums = equalize_snums(snums).map(function(s) { return pad_left(s,2) })
+    var maxdecimals = decimal_places(snums[0])
+    var maxLength = snums[0].length
+    
     var carry = 0
     var sresult = ''
     if (maxdecimals > 0) { //Decimal addition
@@ -279,7 +278,7 @@ document.smath = (function() {
     }
 
     var sresult = add_all(summands)
-    
+
     //divide by 10^totalDecimals
     sresult = shift_decimal_left(sresult, totalDecimals)
 
@@ -321,12 +320,51 @@ document.smath = (function() {
     return pair(normalize(sresult), cdiv, divby)
   }
 
+  /** Calculate a-b
+   */
+  function subtract(num1, num2) {
+    var snums = equalize_snums([num1,num2].map(snum))
+    var sign = ''
+    if (less_decimal(snums[0], snums[1])) {
+      sign='-' //Result will be negative
+      snums = [snums[1], snums[0]] //Swap places
+    }
+
+    var sresult = ''
+    var carry = 0
+
+    var a = snums[0] //a-b
+    var b = snums[1]
+
+    for(var c = a.length-1; c >= 0; --c) {
+      if (a[c] == '.') {
+        sresult = '.' + sresult
+      } else { //Normal digit subtraction
+        var da = parseInt(a[c])
+        var db = parseInt(b[c]) + carry
+
+        if (db > da) {
+          da += 10
+          carry = 1
+        } else {
+          carry = 0
+        }
+        
+        sresult = (da-db)  + sresult
+      }
+    }
+
+
+    return sign + normalize(sresult)
+  }
+
 
 
   var smath = {
     'add':add,
     'mul':multiply,
     'div':divide,
+    'sub':subtract,
 
     'norm':normalize
 
