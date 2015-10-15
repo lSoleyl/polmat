@@ -222,9 +222,5 @@ document.reloadVars = function(seed) {
 
   ex.selector = shortOne ? ex.selectors[0] : ex.selectors[1]
 
-  if (shortOne) {
-    ex.selected = (parseInt(ex.x) < parseInt(ex.y)) ? ex.x : ex.y
-  } else {
-    ex.selected = (parseInt(ex.x) > parseInt(ex.y)) ? ex.x : ex.y
-  }
+  ex.selected = shortOne ? ex.y : ex.x //y is always shorter than x
 }
