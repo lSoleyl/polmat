@@ -53,6 +53,7 @@ var percentMapping = {
   '50' : { z:1, n:2  },
   '60' : { z:3, n:5  },
   '75' : { z:3, n:4  },
+  '80' : { z:4, n:5  },
   '100': { z:1, n:1  }
 }
 
@@ -77,7 +78,7 @@ document.reloadVars = function(seed) {
   
   //Exercise 2
   ex = vars['2']
-  ex.azubiF = Math.opRand({min:2, max:5})
+  ex.azubiF =  Math.opRand({min:2, max:5})
   ex.azubi = Math.opRand({min:3, max:7})
   ex.mg = ex.azubi * ex.azubiF
 
@@ -86,7 +87,7 @@ document.reloadVars = function(seed) {
   ex.workhours = c.workday * ex.workdays
 
   var percentValues = Object.keys(percentMapping)
-  ex.masterP = parseInt(Math.opRand(percentValues))
+  ex.masterP =  parseInt(Math.opRand(percentValues))
   var percent = percentMapping[ex.masterP]
 
   ex.masterZ = ex.masterP + 100
@@ -96,7 +97,7 @@ document.reloadVars = function(seed) {
   ex.master = ex.mg * ex.masterZ2 / ex.masterN2
 
   ex.azubiR = ex.azubi * ex.workdays
-  ex.masterR = ex.master * ex.workdays //TODO We need some better number arithmetics here
-  ex.result = ex.masterR - ex.azubiR
+  ex.masterR = document.smath.mul(ex.master,ex.workdays)
+  ex.result = document.smath.sub(ex.masterR,ex.azubiR)
 
 }
