@@ -28,32 +28,11 @@
       }
     }
 
-    var display = document.smath.display
-
 
     function reloadVariables() {
       var seed = parseInt($("#seed").val())
       document.reloadVars(seed)
-
-      $("span.variable[name]").each(function(i,element) { //Update values
-        var varSpan = $(element)
-        var div = varSpan.closest("div[ex]")
-        if (!div) {
-          console.error("Missing parent excercise div for following element:")
-          console.log(element)
-        } else {
-          var excercise = div.attr('ex')
-          var varName = varSpan.attr('name')
-          varSpan.text(display(document.variables[excercise][varName]))
-        }
-      })
-
-      $("span.constant[name]").each(function(i,element) { //Set constants
-        var constSpan = $(element)
-        var varName = constSpan.attr('name')
-
-        constSpan.text(display(document.constants[varName]))
-      })
+      document.updateUI()
     }
 
 
@@ -105,7 +84,7 @@
 
         <div ex=2>
           <h3>Aufgabe 2</h3>
-          Ein Malergeselle renoviert ein Zimmer von <var name="mg"></var>m² an einem Arbeitstag (<const name="workday"></const> Stunden). Der Azubi schafft in dieser Zeit nur <span class="variable">1/<var name="azubiF"></var></span> dieser Arbeitsleistung. Der Meister arbeitet noch schneller als der Geselle und liegt damit <var name="masterP"></var>% höher in der Arbeitsleistung. Wie hoch ist die Differenz der geleisteten Arbeit (renovierter Raum in m²) zwischen bestem und schlechtestem Ergebnis nach <var name="workdays"></var> Arbeitstagen?
+          Ein Malergeselle renoviert ein Zimmer von <var name="mg"></var>m² an einem Arbeitstag (<const name="workday"></const> Stunden). Der Azubi schafft in dieser Zeit nur <var name="azubiL"></var> dieser Arbeitsleistung. Der Meister arbeitet noch schneller als der Geselle und liegt damit <var name="masterP"></var>% höher in der Arbeitsleistung. Wie hoch ist die Differenz der geleisteten Arbeit (renovierter Raum in m²) zwischen bestem und schlechtestem Ergebnis nach <var name="workdays"></var> Arbeitstagen?
 
         </div>
 
@@ -119,6 +98,13 @@
         <div ex=4>
           <h3>Aufgabe 4</h3>
           Wie groß ist die monatliche Rate für die bank bei einer Zinsbelastung von <var name="rate"></var>% pro jahr für eine Kreditsumme von <var name="credit"></var>€?
+        </div>
+
+        <div ex=5>
+          <h3>Aufgabe 5</h3>
+          Die Reaktionszeit eines Gefahrgutlastwagenfahrers beträgt <var name="delay"></var> Sekunde<ifnot name="delayS" value="1">n</ifnot>.
+          Wie viele Meter fährt der Fahrer, wenn er mit einer Geschwindigkeit von <var name="speed"></var>km/h fährt und plötzlich
+          ein Stauende sieht, bevor er anfängt zu bremsen?
         </div>
       </div>
 
@@ -405,6 +391,71 @@
             <input class=eq>
             <mid><var name="monthlyRate"></var>€</mid>
           </div>
+        </div>
+
+        <div ex=5> <!-- Excercise 5 --> 
+          <h3>Aufgabe 5</h3>
+          <div>
+            Gefragt ist nach der Strecke, die der Fahrer in <span class="variable"><var name="delay"></var><if name="delayS" value="1">r</if></span> Sekunde<ifnot name="delayS" value="1">n</ifnot> zurücklegt. Dazu muss zuerst die Geschwindigkeit auf 
+            m/s umgerechnet werden. Es gilt: 1 m/s = <const name="ms"></const> km/h.
+          </div>
+          <div>
+            <mid>Geschwindigkeit</mid>
+            <input class="eq">
+            <mid><var name="speed"></var></mid>
+            <frac><top>km</top><bottom>h</bottom></frac>
+            <input class=eq>
+            <frac>
+              <top><var name="speed"></var></top>
+              <bottom><const name="ms"></const></bottom>
+            </frac>
+            <frac><top>m</top><bottom>s</bottom></frac>
+            <input class=eq>
+            <frac>
+              <top><var name="speed10"></var></top>
+              <bottom><var name="ms10"></var></bottom>
+            </frac>
+            <frac><top>m</top><bottom>s</bottom></frac>
+            <if name="delayS" value="1">
+              <input class=eq>
+              <mid><var name="result"></var></mid>
+              <frac><top>m</top><bottom>s</bottom></frac>
+            </if>
+          </div>
+          <ifnot name="delayS" value="1">
+            <div>
+              <mid>v</mid>
+              <input class=eq>
+              <frac><top>s</top><bottom>t</bottom></frac>
+              <input class="equiv">
+              <mid>s</mid>
+              <input class=eq>
+              <mid>v &middot; t</mid>
+            </div>
+
+            <div>
+              <mid>Strecke</mid>
+              <input class=eq>
+              <frac>
+                <top><var name="speed10"></var></top>
+                <bottom><var name="ms10"></var></bottom>
+              </frac>
+              <frac><top>m</top><bottom>s</bottom></frac>
+              <mid>&middot; <var name="delayS"></var>s</mid>
+              <input class=eq>
+              <frac>
+                <top><var name="speed10"></var></top>
+                <bottom><var name="msx"></var></bottom>
+              </frac>
+              <mid>m</mid>
+              <input class=eq>
+              <mid><var name="result"></var>m</mid>
+            </div>
+          </ifnot>
+          <div>
+            Der Gefahrgutlastwagenfahrer fährt also noch <var name="result"></var>m bevor er anfängt zu bremsen.
+          </div>
+
         </div>
       </div>
     </div>

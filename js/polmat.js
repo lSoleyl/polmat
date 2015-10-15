@@ -53,5 +53,85 @@ $(function() {
   })
 
 
+  $("if").each(function(i,element) {
+    var iff = $(element)
+    var replace = $('<span type="if"></span>')
+    replace.html(iff.html())
+    replace.attr({name:iff.attr('name'), value:iff.attr('value')})
+    iff.replaceWith(replace)
+  })
+
+  $("ifnot").each(function(i,element) {
+    var iff = $(element)
+    var replace = $('<span type="ifnot"></span>')
+    replace.html(iff.html())
+    replace.attr({name:iff.attr('name'), value:iff.attr('value')})
+    iff.replaceWith(replace)
+  })
+
   $("input.equiv").replaceWith($('<span class="center">&nbsp;&nbsp;&nbsp;&nbsp;<=>&nbsp;&nbsp;&nbsp;&nbsp;</span>'))
 })
+
+
+document.updateUI = function() {
+  var display = document.smath.display
+
+  $("span.variable[name]").each(function(i,element) { //Update values
+    var varSpan = $(element)
+    var div = varSpan.closest("div[ex]")
+    if (!div) {
+      console.error("Missing parent excercise div for following element:")
+      console.log(element)
+    } else {
+      var excercise = div.attr('ex')
+      var varName = varSpan.attr('name')
+      varSpan.text(display(document.variables[excercise][varName]))
+    }
+  })
+
+  $("span.constant[name]").each(function(i,element) { //Set constants
+    var constSpan = $(element)
+    var varName = constSpan.attr('name')
+
+    constSpan.text(display(document.constants[varName]))
+  })
+
+  //Update conditional elements
+  $("span[type=if]").each(function(i,element) {
+    var cdiv = $(element)
+    var div = cdiv.closest("div[ex]")
+    if (!div) {
+      console.error("Missing parent excercise div for following element:")
+      console.log(element)
+    } else {
+      var excercise = div.attr('ex')
+      var varName = cdiv.attr('name')
+      var value = cdiv.attr('value')
+      if (value == display(document.variables[excercise][varName])) {
+        cdiv.css({'display':''})
+      } else {
+        cdiv.css({'display':'none'})
+      }
+    }
+
+  })
+
+  $("span[type=ifnot]").each(function(i,element) {
+    var cdiv = $(element)
+    var div = cdiv.closest("div[ex]")
+    if (!div) {
+      console.error("Missing parent excercise div for following element:")
+      console.log(element)
+    } else {
+      var excercise = div.attr('ex')
+      var varName = cdiv.attr('name')
+      var value = cdiv.attr('value')
+      if (value != display(document.variables[excercise][varName])) {
+        cdiv.css({'display':''})
+      } else {
+        cdiv.css({'display':'none'})
+      }
+    }
+
+  })
+}

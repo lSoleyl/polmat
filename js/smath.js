@@ -400,6 +400,12 @@ document.smath = (function() {
 
 
   function display(num) {
+    var str = ''+num
+    for(var c = 0; c < str.length; ++c) {
+      if (str[c] != '.' && str[c] != '-' && (str[c] < '0' || str[c] > '9'))  //Not a number
+        return num
+    }
+
     var s = snum(num).replace('.',',') //Use european decimal sign
 
     //Insert space every three digits before the decimal sign

@@ -4,7 +4,8 @@
 //Constants
 document.constants = {
   '100km':100, //km
-  'workday':8  //h
+  'workday':8, //h
+  'ms':"3.6"   //kmh -> ms
 }
 
 //Default values
@@ -21,7 +22,8 @@ document.variables = {
 
   '2': {
     'mg':18,
-    'azubiF':3, //= 1/3
+    'azubiL': "ein Drittel",
+    'azubiF': 3, //= 1/3
     'masterP':25,
     'workdays':1.5,
 
@@ -59,10 +61,21 @@ document.variables = {
     'credit2':150,
     'annualRate':14250,
     'monthlyRate':1187.5
+  },
+
+  '5': {
+    'speed':96,
+    'delay':"eine",
+    'delayS':1,
+    'speed10':960,
+    'ms10':36,
+    'result':"26.667",
+    'msx':36
   }
 }
 
-
+var secondLiterals = ["null", "eine", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"]
+var fractionList = [ undefined, undefined, "die Hälfte", "ein Drittel", "ein Viertel", "ein Fünftel" ]
 
 var percentMapping = {
   '10' : { z:1, n:10 },
@@ -99,6 +112,7 @@ document.reloadVars = function(seed) {
   //Exercise 2
   ex = vars['2']
   ex.azubiF =  Math.opRand({min:2, max:5})
+  ex.azubiL = fractionList[ex.azubiF]
   ex.azubi = Math.opRand({min:3, max:7})
   ex.mg = ex.azubi * ex.azubiF
 
@@ -143,5 +157,20 @@ document.reloadVars = function(seed) {
   ex.credit = smath.mul(ex.credit2, 1000)
 
   ex.rate = smath.div(ex.rate2, 10)
+
+
+  //Excercise 5
+  ex = vars['5']
+
+
+  ex.delayS = Math.opRand([1,2,3])
+  ex.delay = secondLiterals[ex.delayS]
+  ex.ms10 = 36
+  ex.msx = smath.div(ex.ms10, ex.delayS)
+  ex.speed = Math.opRand({min:80, max:98})
+  ex.speed10 = ex.speed * 10
+  ex.result = smath.div(ex.speed10, ex.msx)
+
+
 
 }
