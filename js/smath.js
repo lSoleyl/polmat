@@ -2,6 +2,27 @@ document.smath = (function() {
 
   function id(x) { return x }
 
+  /** Returns true if snum1 < snum2
+   *  Only defined for integral numbers
+   */
+  function less(snum1, snum2) {
+    if (snum1 == snum2)
+      return false
+    else if (snum1.length < snum2.length)
+      return true
+    else if (snum1.length > snum2.length)
+      return false
+    else {
+      for(var c = 0; c < snum1.length; ++c) {
+        if (snum1[c] < snum2[c])
+          return true
+        else if (snum1[c] > snum2[c])
+          return false
+      }
+      throw "less comparison error"
+    }
+  }
+
   Array.prototype.reduce = function(fn) {
     var result = this[0]
     for(var c = 1; c < this.length; ++c)
@@ -61,6 +82,8 @@ document.smath = (function() {
     return snum
   }
 
+
+  function pair(q,r,d) { return { q:q, r:r, d:d }}
 
   /** This function will add a decimal point if not
    *  present and then fill them with zeros
@@ -143,7 +166,33 @@ document.smath = (function() {
     return sresult
   }
 
+  /** Moves the decimal point right by n 
+   *  columns. Equals snum * 10^n
+   */
+  function shift_decimal_right(snum, n) {
+    if (n == 0) 
+      return snum
 
+    var snum = pad_decimals_to(snum, n)
+    var decimals = decimal_places(snum)
+
+    var beforeDecimal = snum.indexOf('.')
+    var sresult = snum.substr(0,beforeDecimal)
+    if (sresult == '0') 
+      sresult = ''
+    sresult += snum.substr(beforeDecimal+1,n)
+    if (decimals > n) {
+      sresult += '.'
+      var decimalsLeft = decimals - n
+      sresult += snum.substr(-decimalsLeft, decimalsLeft)
+    }
+
+    return sresult
+  }
+
+
+  /** Normalizes the look of decimal numbers
+   */
   function normalize(snum) {
     //cut off initial zeroes
     while(snum[0] == '0' && snum.length > 1 && snum[1] != '.') {
@@ -165,7 +214,6 @@ document.smath = (function() {
 
 
   function snum(num) { return ''+num }
-
 
   function add_all(snums) {
     var maxdecimals = snums.map(decimal_places).max()
@@ -238,13 +286,50 @@ document.smath = (function() {
     return normalize(sresult)
   }
 
+  function divide(num1, num2) {
+    var snums = [num1, num2].map(snum)
+    if (snums[0] == "0") {
+      return pair('0','0')
+    } else if (snums[1] == "0") {
+      throw "Division by zero!"
+    }
+
+    var maxdecs = snums.map(decimal_places).max()
+    snums = snums.map(function(s) { return shift_decimal_right(s,maxdecs) })
+    
+    var divisor = snums[0]
+    var divby = snums[1]
+
+    
+    var cdiv = ''
+    var sresult = ''
+
+    while(divisor.length > 0) { //Division loop
+      //Pull digit
+      cdiv += divisor[0]
+      divisor = divisor.substr(1)
+
+      //Try to divide
+      if (less(cdiv, divby)) { //No division possible
+        sresult += '0'
+      } else { //Division possible
+        sresult += parseInt(parseInt(cdiv)/parseInt(divby))
+        cdiv = snum(parseInt(cdiv) % parseInt(divby))
+      }  
+    }
+
+    return pair(normalize(sresult), cdiv, divby)
+  }
+
 
 
   var smath = {
     'add':add,
     'mul':multiply,
+    'div':divide,
 
     'norm':normalize
+
   }
 
   return smath;
