@@ -71,6 +71,23 @@ document.variables = {
     'ms10':36,
     'result':"26.667",
     'msx':36
+  },
+
+  '6': {
+    'length':90,
+    'factor':'2/3',
+    'selector': 'kürzere',
+    'fZ':2,
+    'fN':3,
+    'fZ2':5, //fZ + fN
+    'pZ':270,
+    'x':54,
+    'y':36,
+    'selected':36,
+
+
+
+    'selectors':['kürzere', 'längere']
   }
 }
 
@@ -171,6 +188,43 @@ document.reloadVars = function(seed) {
   ex.speed10 = ex.speed * 10
   ex.result = smath.div(ex.speed10, ex.msx)
 
+  //Excercise 6
+  ex = vars['6']
+
+  
+  var factors = [ 
+    {z:2, n:3}, 
+    {z:1, n:3},
+    {z:3, n:4},
+    {z:1, n:5},
+    {z:3, n:5},
+    {z:2, n:7}
+  ]
 
 
+  var f = Math.opRand(factors)
+
+  ex.factor = '' + f.z + '/' + f.n
+  ex.fZ = f.z
+  ex.fN = f.n
+  ex.fZ2 = ex.fZ + ex.fN
+
+  var minX = parseInt(50/ex.fN)*ex.fN
+  var maxX = parseInt(200/ex.fN)*ex.fN
+  ex.x = Math.opRand({min:minX, max:maxX, step:ex.fN})
+
+  ex.length = smath.div(smath.mul(ex.x, ex.fZ2), ex.fN)
+  ex.y = smath.sub(ex.length, ex.x)
+
+  ex.pZ = smath.mul(ex.length, ex.fN)
+
+  var shortOne = Math.opRand([true,false])
+
+  ex.selector = shortOne ? ex.selectors[0] : ex.selectors[1]
+
+  if (shortOne) {
+    ex.selected = (parseInt(ex.x) < parseInt(ex.y)) ? ex.x : ex.y
+  } else {
+    ex.selected = (parseInt(ex.x) > parseInt(ex.y)) ? ex.x : ex.y
+  }
 }
