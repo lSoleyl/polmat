@@ -28,7 +28,7 @@
       }
     }
 
-
+    var display = document.smath.display
 
 
     function reloadVariables() {
@@ -44,7 +44,7 @@
         } else {
           var excercise = div.attr('ex')
           var varName = varSpan.attr('name')
-          varSpan.text(document.variables[excercise][varName])
+          varSpan.text(display(document.variables[excercise][varName]))
         }
       })
 
@@ -52,7 +52,7 @@
         var constSpan = $(element)
         var varName = constSpan.attr('name')
 
-        constSpan.text(document.constants[varName])
+        constSpan.text(display(document.constants[varName]))
       })
     }
 
@@ -114,6 +114,11 @@
           Ein Händer kauft für <var name="m0"></var>€ Gewürzpartien. An jeder verkauften Gewürzpartie verdient er 
           <var name="unitprofit"></var>€ (Gewinn). Nach Verkauf seines Gesamtbestandes hat er <var name="m1"></var>€ eingenommen.
           Wie viele Gewürzpartien hatte er?
+        </div>
+
+        <div ex=4>
+          <h3>Aufgabe 4</h3>
+          Wie groß ist die monatliche Rate für die bank bei einer Zinsbelastung von <var name="rate"></var>% pro jahr für eine Kreditsumme von <var name="credit"></var>€?
         </div>
       </div>
 
@@ -186,7 +191,7 @@
 
             <input class="equiv">
 
-            <mid><var>X</var></mid>
+            <mid><var>X</var> km</mid>
 
             <input class="eq">
 
@@ -368,6 +373,37 @@
           <div>
           <br/>
             Der Händer hat <var name="units"></var> Gewürzpartien gekauft und wieder verkauft
+          </div>
+        </div>
+
+
+        <div ex=4> <!-- Excercise 4 -->
+          <h3>Aufgabe 4</h3>
+          <div>
+            <mid>Jahresrate</mid>
+            <input class="eq">
+            <mid><var name="credit"></var>€ &middot; <var name="rate"></var>%</mid>
+            <input class="eq">
+            <mid><var name="credit"></var>€ &middot; <var name="decRate"></var></mid>
+            <input class="eq">
+            <mid><var name="credit2"></var>€ &middot; <var name="rate2"></var></mid>
+            <input class="eq">
+            <mid><var name="annualRate"></var>€
+          </div> 
+          <div>
+            <mid>Monatsrate</mid>
+            <input class=eq>
+            <frac>
+              <top>Jahresrate</top>
+              <bottom>12</bottom>
+            </frac>
+            <input class=eq>
+            <frac>
+              <top><var name="annualRate"></var>€</top>
+              <bottom>12</bottom>
+            </frac>
+            <input class=eq>
+            <mid><var name="monthlyRate"></var>€</mid>
           </div>
         </div>
       </div>

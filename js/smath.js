@@ -320,6 +320,36 @@ document.smath = (function() {
     return pair(normalize(sresult), cdiv, divby)
   }
 
+  function fdiv(num1, num2, precision) {
+    var precision = precision || 5
+    var result = divide(num1,num2) 
+
+    if (parseInt(result.r) == 0)
+      return result.q
+
+    var sresult = result.q + '.'
+    //Execute division loop after decimal sign
+    var cdiv = result.r
+    var divby = result.d
+
+    for(var c = 0; c < precision; ++c) {
+      cdiv += '0' //Take next zero
+
+      if (less(cdiv, divby)) { //No division possible
+        sresult += '0'
+      } else {
+        sresult += parseInt(parseInt(cdiv)/parseInt(divby))
+        cdiv = snum(parseInt(cdiv) % parseInt(divby))
+      }
+
+      if (cdiv == '0') {
+        return sresult
+      }
+    }
+
+    return sresult
+  }
+
   /** Calculate a-b
    */
   function subtract(num1, num2) {
@@ -349,7 +379,7 @@ document.smath = (function() {
         } else {
           carry = 0
         }
-        
+
         sresult = (da-db)  + sresult
       }
     }
@@ -359,14 +389,39 @@ document.smath = (function() {
   }
 
 
+  function display(num) {
+    var s = snum(num).replace('.',',') //Use european decimal sign
+
+    //Insert space every three digits before the decimal sign
+    var sign = s.indexOf(',')
+    var result = ''
+
+    if (sign != -1) {
+      result = s.substr(sign) //Copy all digits after the decimal sign (including the sign)
+      s = s.substr(0,sign)
+    }
+
+    for(var c = 0; c < s.length; ++c) {
+      if (c%3 == 0 && c != 0) 
+        result = ' ' + result
+
+      result = s[s.length-c-1] + result
+    }
+
+
+    return result
+  }
+
 
   var smath = {
     'add':add,
     'mul':multiply,
-    'div':divide,
+    'divr':divide,
     'sub':subtract,
+    'div':fdiv,
 
-    'norm':normalize
+    'norm':normalize,
+    'display':display,
 
   }
 

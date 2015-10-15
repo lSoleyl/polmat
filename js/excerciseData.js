@@ -48,6 +48,17 @@ document.variables = {
     'unitprofit':100,
     'totalprofit':3500,
     'units':35
+  },
+
+  '4': {
+    'rate':9.5,
+    'credit':150000,
+    'decRate':"0.095",
+
+    'rate2':95,
+    'credit2':150,
+    'annualRate':14250,
+    'monthlyRate':1187.5
   }
 }
 
@@ -68,6 +79,7 @@ var percentMapping = {
 //This function calculates the new variables
 document.reloadVars = function(seed) {
   Math.seed = seed
+  var smath = document.smath
 
 
   var c = document.constants
@@ -105,8 +117,8 @@ document.reloadVars = function(seed) {
   ex.master = ex.mg * ex.masterZ2 / ex.masterN2
 
   ex.azubiR = ex.azubi * ex.workdays
-  ex.masterR = document.smath.mul(ex.master,ex.workdays)
-  ex.result = document.smath.sub(ex.masterR,ex.azubiR)
+  ex.masterR = smath.mul(ex.master,ex.workdays)
+  ex.result = smath.sub(ex.masterR,ex.azubiR)
 
 
   //Excercise 3
@@ -119,5 +131,17 @@ document.reloadVars = function(seed) {
   ex.m1 = ex.m0 + ex.totalprofit
 
 
+  //Excercise 4
+  ex = vars['4']
+  
+  ex.rate2 = Math.opRand({min:65, max:95, step:10})
+  ex.credit2 = smath.mul(Math.opRand({min:40, max:120, step:10}),3)
+  ex.annualRate = smath.mul(ex.rate2, ex.credit2)
+  ex.monthlyRate = smath.div(ex.annualRate, 12)
+
+  ex.decRate = smath.div(ex.rate2, 1000)
+  ex.credit = smath.mul(ex.credit2, 1000)
+
+  ex.rate = smath.div(ex.rate2, 10)
 
 }
