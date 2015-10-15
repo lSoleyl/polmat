@@ -240,8 +240,13 @@
                 <const name="workday"></const>h
               </bottom>
             </frac>
-            ... TODO
-          </div> <!-- TODO Kürzen und Zusammenrechnen -->
+            <input class="eq">
+
+            <frac>
+            <top><var name="azubi"></var>m²</top>
+            <bottom><const name="workday"></const>h</bottom>
+            </frac>
+          </div> 
           <div>
             <mid>Meister</mid>
             <input class="eq">
@@ -261,11 +266,69 @@
               <bottom>100</bottom>
             </frac>
             <mid>&middot; Geselle</mid>
+            <input class="eq">
 
+            <frac>
+              <top><var name="masterZ2"></var></top>
+              <bottom><var name="masterN2"></var></bottom>
+            </frac>
+            <mid>&middot; Geselle</mid>
+            <input class="eq">
 
-            ... TODO
+            <frac>
+              <top><var name="masterZ2"></var></top>
+              <bottom><var name="masterN2"></var></bottom>
+            </frac>
+            <mid>&middot;</mid>
 
+            <frac>
+              <top>
+                <var name="mg"></var>m²
+              </top>
+              <bottom>
+                <const name="workday"></const>h
+              </bottom>
+            </frac>
 
+            <input class="eq">
+            
+            <frac>
+              <top>
+                <var name="master"></var>m²
+              </top>
+              <bottom>
+                <const name="workday"></const>h
+              </bottom>
+            </frac>
+          </div>
+          <div>
+            Da alle Brüche <const name="workday"></const>h (= 1 Arbeitstag) im Nenner haben, müssen sie nur mit <var name="workdays"></var> erweitert werden, um auf die Arbeitsleistung von <var name="workdays"></var> Arbeitstagen zu kommen.
+          </div>
+          <div>
+            <mid>Azubi</mid>
+            <input class="eq">
+            <frac>
+              <top><var name="azubiR"></var>m²</top>
+              <bottom><var name="workhours"></var>h</bottom>
+            </frac>
+          </div>
+          <div>
+            <mid>Meister</mid>
+            <input class="eq">
+            <frac>
+              <top><var name="masterR"></var>m²</top>
+              <bottom><var name="workhours"></var>h</bottom>
+             </frac>
+          </div>
+          <div>
+            <mid>Meister - Azubi</mid>
+            <input class="eq">
+            <mid><var name="masterR"></var>m² - <var name="azubiR"></var>m²</mid>
+            <input class="eq">
+            <mid><var name="result"></var>m²</mid>
+          </div>
+          <div>
+          Der Meister schafft innerhalb von <var name="workdays"></var> Arbeitstagen <var name="result"></var>m² mehr als der Azubi.
           </div>
         </div>
       </div>

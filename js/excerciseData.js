@@ -26,9 +26,34 @@ document.variables = {
     'workdays':1.5,
 
     // Intermediate results
-    'masterZ':125
+    'masterZ':125,
+    'azubi':6,
+
+    'masterZ2':5,
+    'masterN2':4,
+
+    'master':22.5,
+    'workhours': 12,
+
+    'azubiR':9,
+    'masterR':33.75,
+
+    'result':24.75
 
   }
+}
+
+
+
+var percentMapping = {
+  '10' : { z:1, n:10 },
+  '20' : { z:1, n:5  },
+  '30' : { z:3, n:10 },
+  '25' : { z:1, n:4  },
+  '50' : { z:1, n:2  },
+  '60' : { z:3, n:5  },
+  '75' : { z:3, n:4  },
+  '100': { z:1, n:1  }
 }
 
 //This function calculates the new variables
@@ -49,13 +74,29 @@ document.reloadVars = function(seed) {
   ex.res2 = ex.fuel / ex.usage
   ex.res3 = ex.res2 * c["100km"]
 
-  return // Remove later
+  
   //Exercise 2
   ex = vars['2']
   ex.azubiF = Math.opRand({min:2, max:5})
-  ex.mg = Math.opRand({min:3, max:7}) * ex.azubiF
+  ex.azubi = Math.opRand({min:3, max:7})
+  ex.mg = ex.azubi * ex.azubiF
 
 
   ex.workdays = Math.opRand({min:1.5, max:4.5, step:0.5})
+  ex.workhours = c.workday * ex.workdays
+
+  var percentValues = Object.keys(percentMapping)
+  ex.masterP = parseInt(Math.opRand(percentValues))
+  var percent = percentMapping[ex.masterP]
+
+  ex.masterZ = ex.masterP + 100
+  ex.masterZ2 = percent.z + percent.n
+  ex.masterN2 = percent.n
+
+  ex.master = ex.mg * ex.masterZ2 / ex.masterN2
+
+  ex.azubiR = ex.azubi * ex.workdays
+  ex.masterR = ex.master * ex.workdays //TODO We need some better number arithmetics here
+  ex.result = ex.masterR - ex.azubiR
 
 }
