@@ -321,7 +321,7 @@ document.smath = (function() {
   }
 
   function fdiv(num1, num2, precision) {
-    var precision = precision || 5
+    var precision = precision || 3
     var result = divide(num1,num2) 
 
     if (parseInt(result.r) == 0)
@@ -332,7 +332,7 @@ document.smath = (function() {
     var cdiv = result.r
     var divby = result.d
 
-    for(var c = 0; c < precision; ++c) {
+    for(var c = 0; c < precision+1; ++c) {
       cdiv += '0' //Take next zero
 
       if (less(cdiv, divby)) { //No division possible
@@ -345,6 +345,16 @@ document.smath = (function() {
       if (cdiv == '0') {
         return sresult
       }
+    }
+
+    //Number doesn't fit within specified precision (round last position)
+    if ((sresult[sresult.length-1] - '0') < 5) {
+      sresult = sresult.substr(0, sresult.length-1) //Cut off last digit
+    } else { //Add 0.xxxx1 to sresult
+      sresult = sresult.substr(0, sresult.length-1) //Cut off last digit
+      var decs = decimal_places(sresult)
+      var rounder = pad_decimals_to(snum(0), decs-1) + '1'
+      sresult = add(sresult, rounder)
     }
 
     return sresult
