@@ -27,10 +27,11 @@ Math.opRand = function(options) {
   
   var delta = (max - min) / step
   
+  var result
   if (delta < 1)
-    return min
-
-  var result = parseInt(Math.seededRandom(delta+1, 0)) * step + min
+    result = min
+  else 
+    result = parseInt(Math.seededRandom(delta+1, 0)) * step + min
   if (Array.isArray(options))
     return options[result]
   else
