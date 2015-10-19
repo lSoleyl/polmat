@@ -88,11 +88,52 @@ document.variables = {
 
 
     'selectors':['kürzere', 'längere']
+  },
+
+  '7': {
+    lt: 'eine',
+    gt: 'drei',
+    ht: 'sechs',
+
+    lf: 1,
+    gf: 3,
+    hf: 6,
+
+    hn: 6,
+    lz: 6,
+    gz: 2,
+    hz: 1,
+
+    tz: 9,
+
+    gcd:1,
+
+    z:3,
+    n:2,
+
+    tmin:40
+
   }
 }
 
-var secondLiterals = ["null", "eine", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"]
+var secondLiterals = ["null", "eine", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf"]
 var fractionList = [ undefined, undefined, "die Hälfte", "ein Drittel", "ein Viertel", "ein Fünftel" ]
+
+function gcd(n,m) {
+  var a = Math.max(n,m)
+  var b = Math.min(n,m)
+
+  if (b == 0)
+    return a  
+
+  return gcd(m, n % m)
+}
+
+function makeLiteral(n) {
+  if (n <= 12)
+    return secondLiterals[n]
+  return ''+n
+}
 
 var percentMapping = {
   '10' : { z:1, n:10 },
@@ -223,4 +264,42 @@ document.reloadVars = function(seed) {
   ex.selector = shortOne ? ex.selectors[0] : ex.selectors[1]
 
   ex.selected = shortOne ? ex.y : ex.x //y is always shorter than x
+
+
+  //Excercise 7
+  ex = vars['7']
+  ex.hz = 1
+
+  do { //TODO this is not really optimal... there must be a better way to get good values
+
+    ex.gz = Math.opRand([2,3,4])
+
+    ex.lz = ex.gz * Math.opRand([2,3,4])
+    ex.hn = ex.lz
+
+    ex.tz = ex.hz + ex.gz + ex.lz
+  } while(ex.tz == 21 || ex.tz == 13 || ex.tz == 7 || ex.tz == 17 || ex.tz == 11)
+
+  ex.lf = 1
+  ex.gf = smath.div(ex.hn, ex.gz)
+  ex.hf = ex.hn
+
+  ex.lt = 'eine'
+  ex.gt = makeLiteral(ex.gf)
+  ex.ht = makeLiteral(ex.hf)
+
+  var teiler = gcd(ex.tz, ex.hn)
+  if (teiler != 1) {
+    ex.gcd = 1
+    ex.z = ex.tz / teiler
+    ex.n = ex.hn / teiler
+  } else {
+    ex.gcd = 0
+    ex.z = ex.tz
+    ex.n = ex.hn
+  }
+
+
+
+  ex.tmin = smath.div(60*ex.n, ex.z)
 }

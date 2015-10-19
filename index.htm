@@ -104,6 +104,11 @@
         <ex nr=6>
           Ein Metallrohr von <var name="length"></var>cm Länge is so zuzuschneiden, dass das eine Stück <var name="factor"></var> der Länge des anderen beträgt. Wie lang ist das <var name="selector"></var> Stück Rohr?
         </ex>
+
+        <ex nr=7>
+          Ein Löwe, ein Gepard und eine Hyäne fressen gemeinsam ein Zebra. Der Löwe alleine würde das Zebra in <var name="lt"></var> Stunde auffressen.
+          Der Gepard bräuchte <var name="gt"></var> Stunden dafür und die Hyäne <var name="ht"></var>. Wie viel Zeit bräuchten sie, wenn sie das Zebra zusammen fressen?
+        </ex>
       </page>
 
 
@@ -510,6 +515,124 @@
           </div>
 
 
+        </ex>
+
+
+        <ex nr=7>
+          <div>
+            Bei dieser Aufgabe darf man nicht den Fehler machen, einfach die Zeiten aufzuaddieren, da dadurch, dass mehr Tiere essen das eine Zebra schneller aufgegessen wird. Man muss stattdessen die Fressgeschwindigkeit der einzelnen Tiere (in Zebras pro Stunde) betrachten und aufaddieren.
+          </div>
+          <div>
+            <mid>v<sub>Löwe</sub></mid>
+            <input class=eq>
+            <if name="lf" value="1">
+              <mid><var name="lf"></var>
+            </if>
+            <ifnot name="lf" value="1">
+              <frac>
+                <top>1</top>
+                <bottom><var name="lf"></var></bottom>
+              </frac>
+            </ifnot>
+            <frac>
+              <top>Zebras</top>
+              <bottom>h</bottom>
+            </frac>
+          </div>
+          <div>
+            <mid>v<sub>Gepard</sub></mid>
+            <input class=eq>
+            <frac>
+              <top>1</top>
+              <bottom><var name="gf"></var></bottom>
+            </frac>
+            <frac>
+              <top>Zebras</top>
+              <bottom>h</bottom>
+            </frac>
+          </div>
+          <div>
+            <mid>v<sub>Hyäne</sub></mid>
+            <input class=eq>
+            <frac>
+              <top>1</top>
+              <bottom><var name="hf"></var></bottom>
+            </frac>
+            <frac><top>Zebras</top><bottom>h</bottom></frac>
+          </div>
+          <div>
+            <mid>v<sub>Gesamt</sub></mid>
+            <input class=eq>
+            <mid>v<sub>Löwe</sub> + v<sub>Gepard</sub> + v<sub>Hyäne</sub></mid>
+            <input class=eq>
+            <frac>
+              <top><var name="lz"></var></top>
+              <bottom><var name="hn"></var></bottom>
+            </frac>
+            <mid>&middot;</mid>
+            <frac><top>Zebras</top><bottom>h</bottom></frac>
+            <mid> + </mid>
+            <frac>
+              <top><var name="gz"></var></top>
+              <bottom><var name="hn"></var></bottom>
+            </frac>
+            <mid>&middot;</mid>
+            <frac><top>Zebras</top><bottom>h</bottom></frac>
+            <mid> + </mid>
+            <frac>
+              <top><var name="hz"></var></top>
+              <bottom><var name="hn"></var></bottom>
+            </frac>
+            <mid>&middot;</mid>
+            <frac><top>Zebras</top><bottom>h</bottom></frac>
+            <input class=eq>
+            <frac>
+              <top><var name="tz"></var></top>
+              <bottom><var name="hn"></var></bottom>
+            </frac>
+            <mid>&middot;</mid>
+            <frac><top>Zebras</top><bottom>h</bottom></frac>
+            <if name="gcd" value="1">
+              <input class=eq>
+              <frac>
+                <top><var name="z"></var></top>
+                <bottom><var name="n"></var></bottom>
+              </frac>
+              <mid>&middot;</mid>
+              <frac><top>Zebras</top><bottom>h</bottom></frac>
+            </if>
+          </div>
+          <div>
+            Nun haben wir die Zebras, die pro Stunde gemeinsam von den dreien gefressen werden. Um jetzt aus Zebras pro Stunde auf <b>Stunden pro Zebra</b> zu kommen muss der Kehrwert gebildet werden.
+          </div>
+          <div>
+            <mid>t</mid>
+            <input class=eq>
+            <frac>
+              <top><var name="n"></var></top>
+              <bottom><var name="z"></var></bottom>
+            </frac>
+            <mid>&middot;</mid>
+            <frac><top>h</top><bottom>Zebra</bottom></frac>
+            <mid>&middot; 1 Zebra</mid>
+            <input class=eq>
+            <frac>
+              <top><var name="n"></var></top>
+              <bottom><var name="z"></var></bottom>
+            </frac>
+            <mid>h</mid>
+            <input class=eq>
+            <frac>
+              <top><var name="n"></var></top>
+              <bottom><var name="z"></var></bottom>
+            </frac>
+            <mid>&middot; 60 min</mid>
+            <input class=eq>
+            <mid><var name="tmin"></var> min</mid>
+          </div>  
+          <div>
+            Die Tiere brauchen zusammen <var name="tmin"></var> Minuten, um das Zebra zu essen
+          </div>
         </ex>
       </page>
     </div>
