@@ -1,3 +1,13 @@
 .dont-print {
   display:none;
 }
+
+.constant {
+  font-weight: bold;
+  color: #cc5500 !important;
+}
+
+.variable {
+  font-weight: bold;
+  color: #cc5500 !important;
+}
