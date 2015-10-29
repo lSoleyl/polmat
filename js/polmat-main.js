@@ -38,5 +38,9 @@ require(['polmat-html', 'jquery', 'ex-data', 'seed-storage', 'bootstrap'], funct
 
     //Initial variable calculation and display
     reloadVariables()
+
+    //Make content visible now, since scripts are done loading
+    $('#content').removeClass('hidden')
+    $('#loading').addClass('hidden')
   })
 })

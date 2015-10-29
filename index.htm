@@ -10,580 +10,586 @@
   </head>
   <body>
     <div class="container">
-      <!-- Header/Config -->
-      <div class="form-group form-inline">
-        <label>Seed</label>
-        <div class="input-group">
-          <div class="input-group-addon hoverGrey no-select dont-print" id="new-seed">Neu</div>
-          <input type="text" value="" class="form-control" id="seed">
+      <div id="content" class="hidden">
+
+        <!-- Header/Config -->
+        <div class="form-group form-inline">
+          <label>Seed</label>
+          <div class="input-group">
+            <div class="input-group-addon hoverGrey no-select dont-print" id="new-seed">Neu</div>
+            <input type="text" value="" class="form-control" id="seed">
+          </div>
+          <input type="button" class="btn btn-default dont-print" value="Aufgaben neu berechnen" id="recalc">
         </div>
-        <input type="button" class="btn btn-default dont-print" value="Aufgaben neu berechnen" id="recalc">
-      </div>
 
 
-      <!-- Actual content -->
-      <page>
-        <h2>Aufgaben</h2>
+        <!-- Actual content -->
+        <page>
+          <h2>Aufgaben</h2>
 
-        
-        <ex nr=1> <!-- Excercise 1 -->
-          Ein Motoroller verbraucht <var name="usage"></var> Liter Benzin auf <const name="100km"></const> km. Wie viel verbraucht er auf <var name="distance"></var> km und wie viele Kilometer kann er mit einem <var name="fuel"></var> Liter fassenden Tank fahren?
-        </ex>
+          
+          <ex nr=1> <!-- Excercise 1 -->
+            Ein Motoroller verbraucht <var name="usage"></var> Liter Benzin auf <const name="100km"></const> km. Wie viel verbraucht er auf <var name="distance"></var> km und wie viele Kilometer kann er mit einem <var name="fuel"></var> Liter fassenden Tank fahren?
+          </ex>
 
-        <ex nr=2>
-          Ein Malergeselle renoviert ein Zimmer von <var name="mg"></var>m² an einem Arbeitstag (<const name="workday"></const> Stunden). Der Azubi schafft in dieser Zeit nur <var name="azubiL"></var> dieser Arbeitsleistung. Der Meister arbeitet noch schneller als der Geselle und liegt damit <var name="masterP"></var>% höher in der Arbeitsleistung. Wie hoch ist die Differenz der geleisteten Arbeit (renovierter Raum in m²) zwischen bestem und schlechtestem Ergebnis nach <var name="workdays"></var> Arbeitstagen?
-        </ex>
+          <ex nr=2>
+            Ein Malergeselle renoviert ein Zimmer von <var name="mg"></var>m² an einem Arbeitstag (<const name="workday"></const> Stunden). Der Azubi schafft in dieser Zeit nur <var name="azubiL"></var> dieser Arbeitsleistung. Der Meister arbeitet noch schneller als der Geselle und liegt damit <var name="masterP"></var>% höher in der Arbeitsleistung. Wie hoch ist die Differenz der geleisteten Arbeit (renovierter Raum in m²) zwischen bestem und schlechtestem Ergebnis nach <var name="workdays"></var> Arbeitstagen?
+          </ex>
 
-        <ex nr=3>
-          Ein Händer kauft für <var name="m0"></var>€ Gewürzpartien. An jeder verkauften Gewürzpartie verdient er 
-          <var name="unitprofit"></var>€ (Gewinn). Nach Verkauf seines Gesamtbestandes hat er <var name="m1"></var>€ eingenommen.
-          Wie viele Gewürzpartien hatte er?
-        </ex>
+          <ex nr=3>
+            Ein Händer kauft für <var name="m0"></var>€ Gewürzpartien. An jeder verkauften Gewürzpartie verdient er 
+            <var name="unitprofit"></var>€ (Gewinn). Nach Verkauf seines Gesamtbestandes hat er <var name="m1"></var>€ eingenommen.
+            Wie viele Gewürzpartien hatte er?
+          </ex>
 
-        <ex nr=4>
-          Wie groß ist die monatliche Rate für die bank bei einer Zinsbelastung von <var name="rate"></var>% pro jahr für eine Kreditsumme von <var name="credit"></var>€?
-        </ex>
+          <ex nr=4>
+            Wie groß ist die monatliche Rate für die bank bei einer Zinsbelastung von <var name="rate"></var>% pro jahr für eine Kreditsumme von <var name="credit"></var>€?
+          </ex>
 
-        <ex nr=5>
-          Die Reaktionszeit eines Gefahrgutlastwagenfahrers beträgt <var name="delay"></var> Sekunde<ifnot name="delayS" value="1">n</ifnot>.
-          Wie viele Meter fährt der Fahrer, wenn er mit einer Geschwindigkeit von <var name="speed"></var>km/h fährt und plötzlich
-          ein Stauende sieht, bevor er anfängt zu bremsen?
-        </ex>
+          <ex nr=5>
+            Die Reaktionszeit eines Gefahrgutlastwagenfahrers beträgt <var name="delay"></var> Sekunde<ifnot name="delayS" value="1">n</ifnot>.
+            Wie viele Meter fährt der Fahrer, wenn er mit einer Geschwindigkeit von <var name="speed"></var>km/h fährt und plötzlich
+            ein Stauende sieht, bevor er anfängt zu bremsen?
+          </ex>
 
-        <ex nr=6>
-          Ein Metallrohr von <var name="length"></var>cm Länge is so zuzuschneiden, dass das eine Stück <var name="factor"></var> der Länge des anderen beträgt. Wie lang ist das <var name="selector"></var> Stück Rohr?
-        </ex>
+          <ex nr=6>
+            Ein Metallrohr von <var name="length"></var>cm Länge is so zuzuschneiden, dass das eine Stück <var name="factor"></var> der Länge des anderen beträgt. Wie lang ist das <var name="selector"></var> Stück Rohr?
+          </ex>
 
-        <ex nr=7>
-          Ein Löwe, ein Gepard und eine Hyäne fressen gemeinsam ein Zebra. Der Löwe alleine würde das Zebra in <var name="lt"></var> Stunde auffressen.
-          Der Gepard bräuchte <var name="gt"></var> Stunden dafür und die Hyäne <var name="ht"></var>. Wie viel Zeit bräuchten sie, wenn sie das Zebra zusammen fressen?
-        </ex>
-      </page>
+          <ex nr=7>
+            Ein Löwe, ein Gepard und eine Hyäne fressen gemeinsam ein Zebra. Der Löwe alleine würde das Zebra in <var name="lt"></var> Stunde auffressen.
+            Der Gepard bräuchte <var name="gt"></var> Stunden dafür und die Hyäne <var name="ht"></var>. Wie viel Zeit bräuchten sie, wenn sie das Zebra zusammen fressen?
+          </ex>
+        </page>
 
 
 
-      <!-- solutions -->
-      <hr class="dont-print">
-      <page>
-        <h2>Lösungen</h2>
-        <ex nr=1>
-          <div>
-            <mid>a)</mid>
-            <frac>
-              <top>
-                <var name="usage"></var>L
-              </top>
-              <bottom>
-                <const name="100km"></const>km
-              </bottom>
-            </frac>
-
-            <mid> &middot; <var name="distance"></var>km</mid>
-
-            <input class="eq">
-
-            <mid>
-              <var name="usage"></var>L &middot;
-            </mid>
-            <frac>
-              <top>
-                <var name="distance"></var>km
-              </top>
-              <bottom>
-                <const name="100km"></const>km
-              </bottom>
-            </frac>
-
-            <input class="eq">
-           
-            <mid>
-              <var name="usage"></var>L &middot; <var name="res0"></var>
-            </mid>
-
-            <input class="eq">
-
-            <mid><u><var name="res1"></var>L</u> (Verbrauch auf <var name="distance"></var>km)</mid>
-          </div>
-          <div>
-            <mid>b)</mid>
-            <frac>
-              <top>
-                <var name="usage"></var>L
-              </top>
-              <bottom>
-                <const name="100km"></const>km
-              </bottom>
-            </frac>
-
-            <input class="eq">
-
-            <frac>
-              <top>
-                <var name="fuel"></var>L
-              </top>
-              <bottom>
-                <var>X</var> km
-              </bottom>
-            </frac>
-
-            <input class="equiv">
-
-            <mid><var>X</var> km</mid>
-
-            <input class="eq">
-
-            <frac>
-              <top>
-                <var name="fuel"></var>L &middot; <const name="100km"></const>km
-              </top>
-              <bottom>
-                <var name="usage"></var>L
-              </bottom>
-            </frac>
-
-            <input class="eq">
-
-            <mid><var name="res2"></var> &middot; <const name="100km"></const>km</mid>
-
-            <input class="eq">
-
-            <mid><var name="res3"></var>km (Reichweite bei einer Tankfüllung von <var name="fuel"></var>L)</mid>
-          </div>
-        </ex>
-
-        <ex nr=2> <!-- Exercise 2 -->
-          Zuerst Arbeitsleistung von Azubi (schlechteste Leistung) und Meister (beste Leistung) pro Arbeitstag (=<const name="workday"></const> h) anhand der Informationen über den Gesellen bestimmen:
-          <div> <!-- Malegeselle -->
-            <mid>Geselle</mid>
-            <input class="eq">
-            <frac>
-              <top>
-                <var name="mg"></var>m²
-              </top>
-              <bottom>
-                <const name="workday"></const>h
-              </bottom>
-            </frac>
-          </div>
-          <div> <!-- Azubi -->
-            <mid>Azubi</mid> 
-            <input class="eq">
-            <frac class="variable">
-              <top>1</top>
-              <bottom><var name="azubiF"></var></bottom>
-            </frac>
-            <mid> &middot; Geselle</mid>
-
-            <input class="eq">
-            <frac class="variable">
-              <top>1</top>
-              <bottom><var name="azubiF"></var></bottom>
-            </frac>
-            <mid>&middot;</mid>
-            <frac>
-              <top>
-                <var name="mg"></var>m²
-              </top>
-              <bottom>
-                <const name="workday"></const>h
-              </bottom>
-            </frac>
-            <input class="eq">
-
-            <frac>
-            <top><var name="azubi"></var>m²</top>
-            <bottom><const name="workday"></const>h</bottom>
-            </frac>
-          </div> 
-          <div>
-            <mid>Meister</mid>
-            <input class="eq">
-            <mid>Geselle + <var name="masterP"></var>%</mid>
-            <input class="eq">
-            <mid>Geselle + </mid>
-            <frac>
-            <top><var name="masterP"></var></top>
-            <bottom>100</bottom>
-            </frac>
-            <mid>&middot; Geselle</mid>
-
-            <input class="eq">
-
-            <frac>
-              <top><var name="masterZ"></var></top>
-              <bottom>100</bottom>
-            </frac>
-            <mid>&middot; Geselle</mid>
-            <input class="eq">
-
-            <frac>
-              <top><var name="masterZ2"></var></top>
-              <bottom><var name="masterN2"></var></bottom>
-            </frac>
-            <mid>&middot; Geselle</mid>
-            <input class="eq">
-
-            <frac>
-              <top><var name="masterZ2"></var></top>
-              <bottom><var name="masterN2"></var></bottom>
-            </frac>
-            <mid>&middot;</mid>
-
-            <frac>
-              <top>
-                <var name="mg"></var>m²
-              </top>
-              <bottom>
-                <const name="workday"></const>h
-              </bottom>
-            </frac>
-
-            <input class="eq">
-            
-            <frac>
-              <top>
-                <var name="master"></var>m²
-              </top>
-              <bottom>
-                <const name="workday"></const>h
-              </bottom>
-            </frac>
-          </div>
-          <div>
-            Da alle Brüche <const name="workday"></const>h (= 1 Arbeitstag) im Nenner haben, müssen sie nur mit <var name="workdays"></var> erweitert werden, um auf die Arbeitsleistung von <var name="workdays"></var> Arbeitstagen zu kommen.
-          </div>
-          <div>
-            <mid>Azubi</mid>
-            <input class="eq">
-            <frac>
-              <top><var name="azubiR"></var>m²</top>
-              <bottom><var name="workhours"></var>h</bottom>
-            </frac>
-          </div>
-          <div>
-            <mid>Meister</mid>
-            <input class="eq">
-            <frac>
-              <top><var name="masterR"></var>m²</top>
-              <bottom><var name="workhours"></var>h</bottom>
-             </frac>
-          </div>
-          <div>
-            <mid>Meister - Azubi</mid>
-            <input class="eq">
-            <mid><var name="masterR"></var>m² - <var name="azubiR"></var>m²</mid>
-            <input class="eq">
-            <mid><var name="result"></var>m²</mid>
-          </div>
-          <div>
-          Der Meister schafft innerhalb von <var name="workdays"></var> Arbeitstagen <var name="result"></var>m² mehr als der Azubi.
-          </div>
-        </ex>
-
-        <ex nr=3> <!-- Excercise 3 -->
-          <div>
-            <mid>Gewinn</mid>
-            <input class="eq">
-            <mid>Erlös - Kosten</mid>
-            <input class="eq">
-            <mid><var name="m1"></var>€ - <var name="m0"></var>€</mid>
-            <input class="eq">
-            <mid><var name="totalprofit"></var>€</mid>
-          </div>
-          <div>
-            <mid>Verkaufte Waren</mid>
-            <input class=eq>
-            <frac>
-              <top>Gewinn</top>
-              <bottom>Gewinn pro Ware</bottom>
-            </frac>
-            <input class=eq>
-            <frac>
-              <top><var name="totalprofit"></var>€</top>
-              <bottom><var name="unitprofit"></var>€</bottom>
-            </frac>
-            <input class="eq">
-            <mid><var name="units"></var></mid>
-          </div>
-          <div>
-          <br/>
-            Der Händer hat <var name="units"></var> Gewürzpartien gekauft und wieder verkauft
-          </div>
-        </ex>
-
-
-        <ex nr=4> <!-- Excercise 4 -->
-          <div>
-            <mid>Jahresrate</mid>
-            <input class="eq">
-            <mid><var name="credit"></var>€ &middot; <var name="rate"></var>%</mid>
-            <input class="eq">
-            <mid><var name="credit"></var>€ &middot; <var name="decRate"></var></mid>
-            <input class="eq">
-            <mid><var name="credit2"></var>€ &middot; <var name="rate2"></var></mid>
-            <input class="eq">
-            <mid><var name="annualRate"></var>€
-          </div> 
-          <div>
-            <mid>Monatsrate</mid>
-            <input class=eq>
-            <frac>
-              <top>Jahresrate</top>
-              <bottom>12</bottom>
-            </frac>
-            <input class=eq>
-            <frac>
-              <top><var name="annualRate"></var>€</top>
-              <bottom>12</bottom>
-            </frac>
-            <input class=eq>
-            <mid><var name="monthlyRate"></var>€</mid>
-          </div>
-        </ex>
-
-        <ex nr=5> <!-- Excercise 5 --> 
-          <div>
-            Gefragt ist nach der Strecke, die der Fahrer in <span class="variable"><var name="delay"></var><if name="delayS" value="1">r</if></span> Sekunde<ifnot name="delayS" value="1">n</ifnot> zurücklegt. Dazu muss zuerst die Geschwindigkeit auf 
-            m/s umgerechnet werden. Es gilt: 1 m/s = <const name="ms"></const> km/h.
-          </div>
-          <div>
-            <mid>Geschwindigkeit</mid>
-            <input class="eq">
-            <mid><var name="speed"></var></mid>
-            <frac><top>km</top><bottom>h</bottom></frac>
-            <input class=eq>
-            <frac>
-              <top><var name="speed"></var></top>
-              <bottom><const name="ms"></const></bottom>
-            </frac>
-            <frac><top>m</top><bottom>s</bottom></frac>
-            <input class=eq>
-            <frac>
-              <top><var name="speed10"></var></top>
-              <bottom><var name="ms10"></var></bottom>
-            </frac>
-            <frac><top>m</top><bottom>s</bottom></frac>
-            <if name="delayS" value="1">
-              <input class=eq>
-              <mid><var name="result"></var></mid>
-              <frac><top>m</top><bottom>s</bottom></frac>
-            </if>
-          </div>
-          <ifnot name="delayS" value="1">
+        <!-- solutions -->
+        <hr class="dont-print">
+        <page>
+          <h2>Lösungen</h2>
+          <ex nr=1>
             <div>
-              <mid>v</mid>
-              <input class=eq>
-              <frac><top>s</top><bottom>t</bottom></frac>
-              <input class="equiv">
-              <mid>s</mid>
-              <input class=eq>
-              <mid>v &middot; t</mid>
+              <mid>a)</mid>
+              <frac>
+                <top>
+                  <var name="usage"></var>L
+                </top>
+                <bottom>
+                  <const name="100km"></const>km
+                </bottom>
+              </frac>
+
+              <mid> &middot; <var name="distance"></var>km</mid>
+
+              <input class="eq">
+
+              <mid>
+                <var name="usage"></var>L &middot;
+              </mid>
+              <frac>
+                <top>
+                  <var name="distance"></var>km
+                </top>
+                <bottom>
+                  <const name="100km"></const>km
+                </bottom>
+              </frac>
+
+              <input class="eq">
+             
+              <mid>
+                <var name="usage"></var>L &middot; <var name="res0"></var>
+              </mid>
+
+              <input class="eq">
+
+              <mid><u><var name="res1"></var>L</u> (Verbrauch auf <var name="distance"></var>km)</mid>
             </div>
-
             <div>
-              <mid>Strecke</mid>
+              <mid>b)</mid>
+              <frac>
+                <top>
+                  <var name="usage"></var>L
+                </top>
+                <bottom>
+                  <const name="100km"></const>km
+                </bottom>
+              </frac>
+
+              <input class="eq">
+
+              <frac>
+                <top>
+                  <var name="fuel"></var>L
+                </top>
+                <bottom>
+                  <var>X</var> km
+                </bottom>
+              </frac>
+
+              <input class="equiv">
+
+              <mid><var>X</var> km</mid>
+
+              <input class="eq">
+
+              <frac>
+                <top>
+                  <var name="fuel"></var>L &middot; <const name="100km"></const>km
+                </top>
+                <bottom>
+                  <var name="usage"></var>L
+                </bottom>
+              </frac>
+
+              <input class="eq">
+
+              <mid><var name="res2"></var> &middot; <const name="100km"></const>km</mid>
+
+              <input class="eq">
+
+              <mid><var name="res3"></var>km (Reichweite bei einer Tankfüllung von <var name="fuel"></var>L)</mid>
+            </div>
+          </ex>
+
+          <ex nr=2> <!-- Exercise 2 -->
+            Zuerst Arbeitsleistung von Azubi (schlechteste Leistung) und Meister (beste Leistung) pro Arbeitstag (=<const name="workday"></const> h) anhand der Informationen über den Gesellen bestimmen:
+            <div> <!-- Malegeselle -->
+              <mid>Geselle</mid>
+              <input class="eq">
+              <frac>
+                <top>
+                  <var name="mg"></var>m²
+                </top>
+                <bottom>
+                  <const name="workday"></const>h
+                </bottom>
+              </frac>
+            </div>
+            <div> <!-- Azubi -->
+              <mid>Azubi</mid> 
+              <input class="eq">
+              <frac class="variable">
+                <top>1</top>
+                <bottom><var name="azubiF"></var></bottom>
+              </frac>
+              <mid> &middot; Geselle</mid>
+
+              <input class="eq">
+              <frac class="variable">
+                <top>1</top>
+                <bottom><var name="azubiF"></var></bottom>
+              </frac>
+              <mid>&middot;</mid>
+              <frac>
+                <top>
+                  <var name="mg"></var>m²
+                </top>
+                <bottom>
+                  <const name="workday"></const>h
+                </bottom>
+              </frac>
+              <input class="eq">
+
+              <frac>
+              <top><var name="azubi"></var>m²</top>
+              <bottom><const name="workday"></const>h</bottom>
+              </frac>
+            </div> 
+            <div>
+              <mid>Meister</mid>
+              <input class="eq">
+              <mid>Geselle + <var name="masterP"></var>%</mid>
+              <input class="eq">
+              <mid>Geselle + </mid>
+              <frac>
+              <top><var name="masterP"></var></top>
+              <bottom>100</bottom>
+              </frac>
+              <mid>&middot; Geselle</mid>
+
+              <input class="eq">
+
+              <frac>
+                <top><var name="masterZ"></var></top>
+                <bottom>100</bottom>
+              </frac>
+              <mid>&middot; Geselle</mid>
+              <input class="eq">
+
+              <frac>
+                <top><var name="masterZ2"></var></top>
+                <bottom><var name="masterN2"></var></bottom>
+              </frac>
+              <mid>&middot; Geselle</mid>
+              <input class="eq">
+
+              <frac>
+                <top><var name="masterZ2"></var></top>
+                <bottom><var name="masterN2"></var></bottom>
+              </frac>
+              <mid>&middot;</mid>
+
+              <frac>
+                <top>
+                  <var name="mg"></var>m²
+                </top>
+                <bottom>
+                  <const name="workday"></const>h
+                </bottom>
+              </frac>
+
+              <input class="eq">
+              
+              <frac>
+                <top>
+                  <var name="master"></var>m²
+                </top>
+                <bottom>
+                  <const name="workday"></const>h
+                </bottom>
+              </frac>
+            </div>
+            <div>
+              Da alle Brüche <const name="workday"></const>h (= 1 Arbeitstag) im Nenner haben, müssen sie nur mit <var name="workdays"></var> erweitert werden, um auf die Arbeitsleistung von <var name="workdays"></var> Arbeitstagen zu kommen.
+            </div>
+            <div>
+              <mid>Azubi</mid>
+              <input class="eq">
+              <frac>
+                <top><var name="azubiR"></var>m²</top>
+                <bottom><var name="workhours"></var>h</bottom>
+              </frac>
+            </div>
+            <div>
+              <mid>Meister</mid>
+              <input class="eq">
+              <frac>
+                <top><var name="masterR"></var>m²</top>
+                <bottom><var name="workhours"></var>h</bottom>
+               </frac>
+            </div>
+            <div>
+              <mid>Meister - Azubi</mid>
+              <input class="eq">
+              <mid><var name="masterR"></var>m² - <var name="azubiR"></var>m²</mid>
+              <input class="eq">
+              <mid><var name="result"></var>m²</mid>
+            </div>
+            <div>
+            Der Meister schafft innerhalb von <var name="workdays"></var> Arbeitstagen <var name="result"></var>m² mehr als der Azubi.
+            </div>
+          </ex>
+
+          <ex nr=3> <!-- Excercise 3 -->
+            <div>
+              <mid>Gewinn</mid>
+              <input class="eq">
+              <mid>Erlös - Kosten</mid>
+              <input class="eq">
+              <mid><var name="m1"></var>€ - <var name="m0"></var>€</mid>
+              <input class="eq">
+              <mid><var name="totalprofit"></var>€</mid>
+            </div>
+            <div>
+              <mid>Verkaufte Waren</mid>
+              <input class=eq>
+              <frac>
+                <top>Gewinn</top>
+                <bottom>Gewinn pro Ware</bottom>
+              </frac>
+              <input class=eq>
+              <frac>
+                <top><var name="totalprofit"></var>€</top>
+                <bottom><var name="unitprofit"></var>€</bottom>
+              </frac>
+              <input class="eq">
+              <mid><var name="units"></var></mid>
+            </div>
+            <div>
+            <br/>
+              Der Händer hat <var name="units"></var> Gewürzpartien gekauft und wieder verkauft
+            </div>
+          </ex>
+
+
+          <ex nr=4> <!-- Excercise 4 -->
+            <div>
+              <mid>Jahresrate</mid>
+              <input class="eq">
+              <mid><var name="credit"></var>€ &middot; <var name="rate"></var>%</mid>
+              <input class="eq">
+              <mid><var name="credit"></var>€ &middot; <var name="decRate"></var></mid>
+              <input class="eq">
+              <mid><var name="credit2"></var>€ &middot; <var name="rate2"></var></mid>
+              <input class="eq">
+              <mid><var name="annualRate"></var>€</mid>
+            </div> 
+            <div>
+              <mid>Monatsrate</mid>
+              <input class=eq>
+              <frac>
+                <top>Jahresrate</top>
+                <bottom>12</bottom>
+              </frac>
+              <input class=eq>
+              <frac>
+                <top><var name="annualRate"></var>€</top>
+                <bottom>12</bottom>
+              </frac>
+              <input class=eq>
+              <mid><var name="monthlyRate"></var>€</mid>
+            </div>
+          </ex>
+
+          <ex nr=5> <!-- Excercise 5 --> 
+            <div>
+              Gefragt ist nach der Strecke, die der Fahrer in <span class="variable"><var name="delay"></var><if name="delayS" value="1">r</if></span> Sekunde<ifnot name="delayS" value="1">n</ifnot> zurücklegt. Dazu muss zuerst die Geschwindigkeit auf 
+              m/s umgerechnet werden. Es gilt: 1 m/s = <const name="ms"></const> km/h.
+            </div>
+            <div>
+              <mid>Geschwindigkeit</mid>
+              <input class="eq">
+              <mid><var name="speed"></var></mid>
+              <frac><top>km</top><bottom>h</bottom></frac>
+              <input class=eq>
+              <frac>
+                <top><var name="speed"></var></top>
+                <bottom><const name="ms"></const></bottom>
+              </frac>
+              <frac><top>m</top><bottom>s</bottom></frac>
               <input class=eq>
               <frac>
                 <top><var name="speed10"></var></top>
                 <bottom><var name="ms10"></var></bottom>
               </frac>
               <frac><top>m</top><bottom>s</bottom></frac>
-              <mid>&middot; <var name="delayS"></var>s</mid>
+              <if name="delayS" value="1">
+                <input class=eq>
+                <mid><var name="result"></var></mid>
+                <frac><top>m</top><bottom>s</bottom></frac>
+              </if>
+            </div>
+            <ifnot name="delayS" value="1">
+              <div>
+                <mid>v</mid>
+                <input class=eq>
+                <frac><top>s</top><bottom>t</bottom></frac>
+                <input class="equiv">
+                <mid>s</mid>
+                <input class=eq>
+                <mid>v &middot; t</mid>
+              </div>
+
+              <div>
+                <mid>Strecke</mid>
+                <input class=eq>
+                <frac>
+                  <top><var name="speed10"></var></top>
+                  <bottom><var name="ms10"></var></bottom>
+                </frac>
+                <frac><top>m</top><bottom>s</bottom></frac>
+                <mid>&middot; <var name="delayS"></var>s</mid>
+                <input class=eq>
+                <frac>
+                  <top><var name="speed10"></var></top>
+                  <bottom><var name="msx"></var></bottom>
+                </frac>
+                <mid>m</mid>
+                <input class=eq>
+                <mid><var name="result"></var>m</mid>
+              </div>
+            </ifnot>
+            <div>
+              Der Gefahrgutlastwagenfahrer fährt also noch <var name="result"></var>m bevor er anfängt zu bremsen.
+            </div>
+
+          </ex>
+
+          <ex nr=6>
+            <div class="right">
+              <mid>Y</mid>
               <input class=eq>
               <frac>
-                <top><var name="speed10"></var></top>
-                <bottom><var name="msx"></var></bottom>
+                <top><var name="fZ"></var></top>
+                <bottom><var name="fN"></var></bottom>
               </frac>
-              <mid>m</mid>
-              <input class=eq>
-              <mid><var name="result"></var>m</mid>
+              <mid>&middot; X</mid>
             </div>
-          </ifnot>
-          <div>
-            Der Gefahrgutlastwagenfahrer fährt also noch <var name="result"></var>m bevor er anfängt zu bremsen.
-          </div>
-
-        </ex>
-
-        <ex nr=6>
-          <div class="right">
-            <mid>Y</mid>
-            <input class=eq>
-            <frac>
-              <top><var name="fZ"></var></top>
-              <bottom><var name="fN"></var></bottom>
-            </frac>
-            <mid>&middot; X</mid>
-          </div>
-          <div class="right">
-            <mid><var name="length"></var>cm</mid>
-            <input class=eq> 
-            <mid>X + Y</mid>
-            <input class=eq> 
-            <mid>X + </mid>
-            <frac>
-              <top><var name="fZ"></var></top>
-              <bottom><var name="fN"></var></bottom>
-            </frac>
-            <mid>&middot; X</mid>
-            <input class=eq>
-            <frac>
-              <top><var name="fZ2"></var></top>
-              <bottom><var name="fN"></var></bottom>
-            </frac>
-            <mid>&middot; X</mid>
-            <mid>&emsp;&emsp;&emsp;&emsp;| &middot;</mid>
-            <frac>
-              <top><var name="fN"></var></top>
-              <bottom><var name="fZ2"></var></bottom>
-            </frac>
-          </div>
-          <div>
-            <input class="equiv">
-            <mid>X</mid>
-            <input class=eq>
-            <frac>
-              <top><var name="pZ"></var></top>
-              <bottom><var name="fZ2"></var></bottom>
-            </frac>
-            <mid>cm</mid>
-            <input class=eq>
-            <mid><var name="x"></var>cm</mid>
-          </div> 
-          <div class="right">
-            <mid>Y</mid>
-            <input class=eq>
-            <mid><var name="length"></var>cm - X</mid>
-            <input class=eq>
-            <mid><var name="length"></var>cm - <var name="x"></var>cm</mid>
-            <input class=eq>
-            <mid><var name="y"></var>cm</mid>
-          </div>
-          <div>
-            Das <var name="selector"></var> Stück ist <var name="selected"></var>cm lang
-          </div>
+            <div class="right">
+              <mid><var name="length"></var>cm</mid>
+              <input class=eq> 
+              <mid>X + Y</mid>
+              <input class=eq> 
+              <mid>X + </mid>
+              <frac>
+                <top><var name="fZ"></var></top>
+                <bottom><var name="fN"></var></bottom>
+              </frac>
+              <mid>&middot; X</mid>
+              <input class=eq>
+              <frac>
+                <top><var name="fZ2"></var></top>
+                <bottom><var name="fN"></var></bottom>
+              </frac>
+              <mid>&middot; X</mid>
+              <mid>&emsp;&emsp;&emsp;&emsp;| &middot;</mid>
+              <frac>
+                <top><var name="fN"></var></top>
+                <bottom><var name="fZ2"></var></bottom>
+              </frac>
+            </div>
+            <div>
+              <input class="equiv">
+              <mid>X</mid>
+              <input class=eq>
+              <frac>
+                <top><var name="pZ"></var></top>
+                <bottom><var name="fZ2"></var></bottom>
+              </frac>
+              <mid>cm</mid>
+              <input class=eq>
+              <mid><var name="x"></var>cm</mid>
+            </div> 
+            <div class="right">
+              <mid>Y</mid>
+              <input class=eq>
+              <mid><var name="length"></var>cm - X</mid>
+              <input class=eq>
+              <mid><var name="length"></var>cm - <var name="x"></var>cm</mid>
+              <input class=eq>
+              <mid><var name="y"></var>cm</mid>
+            </div>
+            <div>
+              Das <var name="selector"></var> Stück ist <var name="selected"></var>cm lang
+            </div>
 
 
-        </ex>
+          </ex>
 
 
-        <ex nr=7>
-          <div>
-            Bei dieser Aufgabe darf man nicht den Fehler machen, einfach die Zeiten aufzuaddieren, da dadurch, dass mehr Tiere essen das eine Zebra schneller aufgegessen wird. Man muss stattdessen die Fressgeschwindigkeit der einzelnen Tiere (in Zebras pro Stunde) betrachten und aufaddieren.
-          </div>
-          <div>
-            <mid>v<sub>Löwe</sub></mid>
-            <input class=eq>
-            <if name="lf" value="1">
-              <mid><var name="lf"></var>
-            </if>
-            <ifnot name="lf" value="1">
+          <ex nr=7>
+            <div>
+              Bei dieser Aufgabe darf man nicht den Fehler machen, einfach die Zeiten aufzuaddieren, da dadurch, dass mehr Tiere essen das eine Zebra schneller aufgegessen wird. Man muss stattdessen die Fressgeschwindigkeit der einzelnen Tiere (in Zebras pro Stunde) betrachten und aufaddieren.
+            </div>
+            <div>
+              <mid>v<sub>Löwe</sub></mid>
+              <input class=eq>
+              <if name="lf" value="1">
+                <mid><var name="lf"></var></mid>
+              </if>
+              <ifnot name="lf" value="1">
+                <frac>
+                  <top>1</top>
+                  <bottom><var name="lf"></var></bottom>
+                </frac>
+              </ifnot>
+              <frac>
+                <top>Zebras</top>
+                <bottom>h</bottom>
+              </frac>
+            </div>
+            <div>
+              <mid>v<sub>Gepard</sub></mid>
+              <input class=eq>
               <frac>
                 <top>1</top>
-                <bottom><var name="lf"></var></bottom>
+                <bottom><var name="gf"></var></bottom>
               </frac>
-            </ifnot>
-            <frac>
-              <top>Zebras</top>
-              <bottom>h</bottom>
-            </frac>
-          </div>
-          <div>
-            <mid>v<sub>Gepard</sub></mid>
-            <input class=eq>
-            <frac>
-              <top>1</top>
-              <bottom><var name="gf"></var></bottom>
-            </frac>
-            <frac>
-              <top>Zebras</top>
-              <bottom>h</bottom>
-            </frac>
-          </div>
-          <div>
-            <mid>v<sub>Hyäne</sub></mid>
-            <input class=eq>
-            <frac>
-              <top>1</top>
-              <bottom><var name="hf"></var></bottom>
-            </frac>
-            <frac><top>Zebras</top><bottom>h</bottom></frac>
-          </div>
-          <div>
-            <mid>v<sub>Gesamt</sub></mid>
-            <input class=eq>
-            <mid>v<sub>Löwe</sub> + v<sub>Gepard</sub> + v<sub>Hyäne</sub></mid>
-            <input class=eq>
-            <frac>
-              <top><var name="lz"></var></top>
-              <bottom><var name="hn"></var></bottom>
-            </frac>
-            <mid>&middot;</mid>
-            <frac><top>Zebras</top><bottom>h</bottom></frac>
-            <mid> + </mid>
-            <frac>
-              <top><var name="gz"></var></top>
-              <bottom><var name="hn"></var></bottom>
-            </frac>
-            <mid>&middot;</mid>
-            <frac><top>Zebras</top><bottom>h</bottom></frac>
-            <mid> + </mid>
-            <frac>
-              <top><var name="hz"></var></top>
-              <bottom><var name="hn"></var></bottom>
-            </frac>
-            <mid>&middot;</mid>
-            <frac><top>Zebras</top><bottom>h</bottom></frac>
-            <input class=eq>
-            <frac>
-              <top><var name="tz"></var></top>
-              <bottom><var name="hn"></var></bottom>
-            </frac>
-            <mid>&middot;</mid>
-            <frac><top>Zebras</top><bottom>h</bottom></frac>
-            <if name="gcd" value="1">
+              <frac>
+                <top>Zebras</top>
+                <bottom>h</bottom>
+              </frac>
+            </div>
+            <div>
+              <mid>v<sub>Hyäne</sub></mid>
               <input class=eq>
               <frac>
-                <top><var name="z"></var></top>
-                <bottom><var name="n"></var></bottom>
+                <top>1</top>
+                <bottom><var name="hf"></var></bottom>
+              </frac>
+              <frac><top>Zebras</top><bottom>h</bottom></frac>
+            </div>
+            <div>
+              <mid>v<sub>Gesamt</sub></mid>
+              <input class=eq>
+              <mid>v<sub>Löwe</sub> + v<sub>Gepard</sub> + v<sub>Hyäne</sub></mid>
+              <input class=eq>
+              <frac>
+                <top><var name="lz"></var></top>
+                <bottom><var name="hn"></var></bottom>
               </frac>
               <mid>&middot;</mid>
               <frac><top>Zebras</top><bottom>h</bottom></frac>
-            </if>
-          </div>
-          <div>
-            Nun haben wir die Zebras, die pro Stunde gemeinsam von den dreien gefressen werden. Um jetzt aus Zebras pro Stunde auf <b>Stunden pro Zebra</b> zu kommen muss der Kehrwert gebildet werden.
-          </div>
-          <div>
-            <mid>t</mid>
-            <input class=eq>
-            <frac>
-              <top><var name="n"></var></top>
-              <bottom><var name="z"></var></bottom>
-            </frac>
-            <mid>&middot;</mid>
-            <frac><top>h</top><bottom>Zebra</bottom></frac>
-            <mid>&middot; 1 Zebra</mid>
-            <input class=eq>
-            <frac>
-              <top><var name="n"></var></top>
-              <bottom><var name="z"></var></bottom>
-            </frac>
-            <mid>h</mid>
-            <input class=eq>
-            <frac>
-              <top><var name="n"></var></top>
-              <bottom><var name="z"></var></bottom>
-            </frac>
-            <mid>&middot; 60 min</mid>
-            <input class=eq>
-            <mid><var name="tmin"></var> min</mid>
-          </div>  
-          <div>
-            Die Tiere brauchen zusammen <var name="tmin"></var> Minuten, um das Zebra zu essen
-          </div>
-        </ex>
-      </page>
+              <mid> + </mid>
+              <frac>
+                <top><var name="gz"></var></top>
+                <bottom><var name="hn"></var></bottom>
+              </frac>
+              <mid>&middot;</mid>
+              <frac><top>Zebras</top><bottom>h</bottom></frac>
+              <mid> + </mid>
+              <frac>
+                <top><var name="hz"></var></top>
+                <bottom><var name="hn"></var></bottom>
+              </frac>
+              <mid>&middot;</mid>
+              <frac><top>Zebras</top><bottom>h</bottom></frac>
+              <input class=eq>
+              <frac>
+                <top><var name="tz"></var></top>
+                <bottom><var name="hn"></var></bottom>
+              </frac>
+              <mid>&middot;</mid>
+              <frac><top>Zebras</top><bottom>h</bottom></frac>
+              <if name="gcd" value="1">
+                <input class=eq>
+                <frac>
+                  <top><var name="z"></var></top>
+                  <bottom><var name="n"></var></bottom>
+                </frac>
+                <mid>&middot;</mid>
+                <frac><top>Zebras</top><bottom>h</bottom></frac>
+              </if>
+            </div>
+            <div>
+              Nun haben wir die Zebras, die pro Stunde gemeinsam von den dreien gefressen werden. Um jetzt aus Zebras pro Stunde auf <b>Stunden pro Zebra</b> zu kommen muss der Kehrwert gebildet werden.
+            </div>
+            <div>
+              <mid>t</mid>
+              <input class=eq>
+              <frac>
+                <top><var name="n"></var></top>
+                <bottom><var name="z"></var></bottom>
+              </frac>
+              <mid>&middot;</mid>
+              <frac><top>h</top><bottom>Zebra</bottom></frac>
+              <mid>&middot; 1 Zebra</mid>
+              <input class=eq>
+              <frac>
+                <top><var name="n"></var></top>
+                <bottom><var name="z"></var></bottom>
+              </frac>
+              <mid>h</mid>
+              <input class=eq>
+              <frac>
+                <top><var name="n"></var></top>
+                <bottom><var name="z"></var></bottom>
+              </frac>
+              <mid>&middot; 60 min</mid>
+              <input class=eq>
+              <mid><var name="tmin"></var> min</mid>
+            </div>  
+            <div>
+              Die Tiere brauchen zusammen <var name="tmin"></var> Minuten, um das Zebra zu essen
+            </div>
+          </ex>
+        </page>
+      </div> <!-- #content -->
+      <div id="loading">
+        <h1>Loading data...</h1>
+      </div>
     </div>
   </body>
 </html>
