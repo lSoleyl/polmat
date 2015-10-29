@@ -1,64 +1,12 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <script src="./js/jquery-2.1.4.js"></script>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/polmat.css">
     <link rel="stylesheet" href="./css/polmat-print.css" media="print">
-    <script src="./js/arrays.js"></script>
-    <script src="./js/smath.js"></script>
-    <script src="./js/random.js"></script>
+    <script data-main="./js/polmat-main.js" src="./js/require.js"></script>
 
-    <script src="./js/excerciseData.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-
-    <script src="./js/polmat.js"></script>
     <title>Polizeitest - Mathe Textaufgaben</title>
-
-    <script>
-    function cookieValue(value) {
-      if (!value) { //Read access
-        var seedStr = document.cookie.split(';').find(function(x) { return x.search("seed=") != -1 })
-
-        if (!seedStr)
-          return null
-        else 
-          return seedStr.substr("seed=".length)
-      } else {
-        document.cookie = 'seed=' + value
-      }
-    }
-
-
-    function reloadVariables() {
-      var seed = parseInt($("#seed").val())
-      document.reloadVars(seed)
-      document.updateUI()
-    }
-
-
-
-    $(function() {
-      //Set seed value: cookie or current time
-      $('#seed').val(cookieValue() || (new Date()).getTime())
-      cookieValue($('#seed').val())
-
-      $('#recalc').click(function() {
-        cookieValue($('#seed').val())
-        reloadVariables()
-      })
-
-      $('#new-seed').click(function() {
-        $('#seed').val((new Date()).getTime())
-        cookieValue($('#seed').val())
-        reloadVariables()
-      })
-
-      reloadVariables()
-    })
-
-    </script>
-
   </head>
   <body>
     <div class="container">

@@ -1,4 +1,4 @@
-document.smath = (function() {
+define(['lodash'], function(_) {
 
   function id(x) { return x }
 
@@ -13,37 +13,6 @@ document.smath = (function() {
    */
   function less_decimal(snum1, snum2) {
     return parseFloat(snum1) < parseFloat(snum2)
-  }
-
-  Array.prototype.reduce = function(fn) {
-    var result = this[0]
-    for(var c = 1; c < this.length; ++c)
-      result = fn(result, this[c])
-    
-    return result
-  }
-
-
-  Array.prototype.map = function (fn) {
-    var result = []
-    for(var c = 0; c < this.length; ++c)
-      result.push(fn(this[c]))
-
-    return result
-  }
-
-  Array.prototype.maxBy = function(fn) {
-    return this.reduce(function(a,b) {
-      return fn(a) >= fn(b) ? a : b
-    })
-  }
-
-  Array.prototype.sum = function() {
-    return this.reduce(function(a,b) {return a+b})
-  }
-
-  Array.prototype.max = function() {
-    return this.maxBy(id)
   }
 
   /** This function will pad snum with 
@@ -184,10 +153,10 @@ document.smath = (function() {
 
 
   function equalize_snums(snums) {
-    var maxdecimals = snums.map(decimal_places).max()
-    snums = snums.map(function(s) { return pad_decimals_to(s, maxdecimals) })
-    var maxLength = snums.map(function(s) { return s.length }).max()
-    return snums.map(function(s) { return pad_left_to(s, maxLength) })
+    var maxdecimals = _.max(_.map(snums, decimal_places))
+    snums = _.map(snums, function(s) { return pad_decimals_to(s, maxdecimals) })
+    var maxLength = _.max(_.map(snums, function(s) { return s.length }))
+    return _.map(snums, function(s) { return pad_left_to(s, maxLength) })
   }
 
   /** Normalizes the look of decimal numbers
@@ -216,7 +185,7 @@ document.smath = (function() {
 
   function add_all(snums) {
     //Make all summands equal in length and pad 2 zeroes at front for carry
-    snums = equalize_snums(snums).map(function(s) { return pad_left(s,2) })
+    snums = _.map(equalize_snums(snums), function(s) { return pad_left(s,2) })
     var maxdecimals = decimal_places(snums[0])
     var maxLength = snums[0].length
     
@@ -224,9 +193,9 @@ document.smath = (function() {
     var sresult = ''
     if (maxdecimals > 0) { //Decimal addition
       for(var c = 0; c < maxdecimals; ++c) {
-        var ints = snums.map(function(s) { return s[maxLength-1-c] }).map(parseInt)
+        var ints = _.map(snums, function(s) { return parseInt(s[maxLength-1-c]) })
         ints.push(carry)
-        var res = ints.sum()
+        var res = _.sum(ints)
         sresult = (res%10) + sresult
         carry = parseInt(res/10)
       }
@@ -236,9 +205,9 @@ document.smath = (function() {
     var realLength = maxLength - sresult.length
 
     for(var c = 0; c < realLength; ++c) {
-      var ints = snums.map(function(s) { return s[realLength-1-c] }).map(parseInt)
+      var ints = _.map(snums, function(s) { return parseInt(s[realLength-1-c]) })
       ints.push(carry)
-      var res = ints.sum()
+      var res = _.sum(ints)
       sresult = (res%10) + sresult
       carry = parseInt(res/10)
     }
@@ -247,7 +216,7 @@ document.smath = (function() {
   }
 
   function add(num1, num2) {
-    var snums = [num1,num2].map(snum)
+    var snums = _.map([num1,num2], snum)
     return add_all(snums)
   }
 
@@ -256,9 +225,9 @@ document.smath = (function() {
   }
 
   function multiply(num1, num2) {
-    var snums = [num1,num2].map(snum)
-    var totalDecimals = snums.map(decimal_places).sum()
-    snums = snums.map(remove_decimals)
+    var snums = _.map([num1,num2], snum)
+    var totalDecimals = _.sum(_.map(snums, decimal_places))
+    snums = _.map(snums, remove_decimals)
 
     //...
     var summands = []
@@ -286,15 +255,15 @@ document.smath = (function() {
   }
 
   function divide(num1, num2) {
-    var snums = [num1, num2].map(snum)
+    var snums = _.map([num1, num2], snum)
     if (snums[0] == "0") {
       return pair('0','0')
     } else if (snums[1] == "0") {
       throw "Division by zero!"
     }
 
-    var maxdecs = snums.map(decimal_places).max()
-    snums = snums.map(function(s) { return shift_decimal_right(s,maxdecs) })
+    var maxdecs = _.max(_.map(snums, decimal_places))
+    snums = _.map(snums, function(s) { return shift_decimal_right(s,maxdecs) })
     
     var divisor = snums[0]
     var divby = snums[1]
@@ -363,7 +332,7 @@ document.smath = (function() {
   /** Calculate a-b
    */
   function subtract(num1, num2) {
-    var snums = equalize_snums([num1,num2].map(snum))
+    var snums = equalize_snums(_.map([num1,num2], snum))
     var sign = ''
     if (less_decimal(snums[0], snums[1])) {
       sign='-' //Result will be negative
@@ -442,4 +411,4 @@ document.smath = (function() {
   }
 
   return smath;
-})()
+})
