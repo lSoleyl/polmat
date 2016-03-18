@@ -72,6 +72,10 @@
           <ex nr=10>
             Von allen Aufgaben ist <var name="einfach"></var> einfach und <var name="schwer"></var> schwer. Wie viel Prozent der Aufgaben sind weder schwer noch leicht?
           </ex>
+
+          <ex nr=11>
+          Eine Maus ist <var name="age"></var> Jahre alt. Nur <var name="factor"></var> der Zeit hat sie außerhalb des Nestes verbracht. Wie viele Monate sind das?
+          </ex>
         </page>
 
 
@@ -615,7 +619,7 @@
               <input class=eq><mid>1h</mid> <mid>+</mid> <frac><top><var name="timez"></var></top><bottom><var name="timen"></var></bottom></frac><mid>h</mid>
               <input class=eq><frac><top><var name="timez2"></var></top><bottom><var name="timen"></var></bottom></frac><mid>h</mid>
             </div>
-            <div>Da sich die Inlineskater voneinander wegbewegen, addieren sich ihre Geschwindigkeiten, wenn man die Strecke zwischen ihnen betrachtet. Genau, wie wenn zwei Autos mit gleicher Geschwindigkeit aufeinander zufahren. Dann ist der Aufprall nämlich auch doppelt so stark, als wenn das Auto gegen eine Wand gefahren wäre, weil sich die Geschwindigkeiten zu einer Gesamtgeschwindigkeit(Aufprallgeschwindigkeit) addieren.
+            <div>Da sich die Inlineskater voneinander wegbewegen, addieren sich ihre Geschwindigkeiten, wenn man die Strecke zwischen ihnen betrachtet. Genau, wie mit zwei Autos, die mit gleicher Geschwindigkeit aufeinander zufahren. Dabei ist der Aufprall nämlich auch doppelt so stark, als bei einem Auto, das gegen eine Wand fährt, weil sich die Geschwindigkeiten zu einer Gesamtgeschwindigkeit(Aufprallgeschwindigkeit) addieren.
             </div>
             <div>
               <mid>v</mid>
@@ -674,6 +678,18 @@
               <input class=eq><frac><top><var name="subzz"></var></top><bottom><var name="snn"></var></bottom></frac> <mid>&middot; 100%</mid>
               <input class=eq><mid><var name="result"></var>%</mid>
             </div>
+          </ex>
+
+
+          <ex nr=11>
+            <div>Für diese Aufgabe muss man nur wissen, dass <const name="one"></const> Jahr = <const name="montspy"></const> Monate sind.</div>
+            <div>
+              <mid><var name="age"></var> Jahre &middot; </mid><frac><top><var name="tz"></var></top><bottom><var name="tn"></var></bottom></frac>
+              <input class=eq><frac><top><var name="tzz"></var></top><bottom><var name="tnn"></var></bottom></frac><mid>Jahre</mid>
+              <input class=eq><frac><top><var name="tzz"></var></top><bottom><var name="tnn"></var></bottom></frac><mid>&middot; <const name="montspy"></const> Monate</mid>
+              <input class=eq><mid><var name="months"></var> Monate</mid>
+            </div>
+
           </ex>
 
           <div>&nbsp;</div> <!-- A small space at the end of the page -->

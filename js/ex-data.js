@@ -7,7 +7,8 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
     '100km':100, //km
     'workday':8, //h
     'ms':"3.6",  //kmh -> ms
-    'one':1
+    'one':1,
+    'montspy':12 //months per year
   },
 
   //Default values
@@ -172,6 +173,21 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
       subzz: 1, //numerator of subtraction 1 - (szz/snn)
 
       result: 50 //percent
+    },
+
+    '11': {
+      age: 4,
+
+      factor:'1/24',
+
+      tz:  1, // 1/24 
+      tn: 24,
+
+      tzz: 1, // 1/24 * 4
+      tnn: 6,
+
+
+      months: 2
     }
   }
 
@@ -441,6 +457,25 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
     ex.subzz = ex.snn - ex.szz
 
     ex.result = smath.div(ex.subzz * 100, ex.snn)
+
+
+    //Excercise 11
+    ex = vars['11']
+
+    ex.tnn = srand([2,3,4,6,12]) //Valid denominators must be able to divide 12
+    ex.tzz = srand({min:1, max:ex.tnn-1})
+    while(gcd(ex.tnn, ex.tzz) != 1) //Ensure, we have a real fraction
+      ex.tzz = srand({min:1, max:ex.tnn-1})
+
+
+    ex.age = srand({min:2,max:5})
+
+    ex.tz = ex.tzz
+    ex.tn = ex.tnn * ex.age
+
+    ex.factor = ex.tz + "/" + ex.tn
+
+    ex.months = smath.div(ex.tzz * 12, ex.tnn)
 
   }
 
