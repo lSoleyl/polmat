@@ -60,6 +60,14 @@
             Ein Löwe, ein Gepard und eine Hyäne fressen gemeinsam ein Zebra. Der Löwe alleine würde das Zebra in <var name="lt"></var> Stunde auffressen.
             Der Gepard bräuchte <var name="gt"></var> Stunden dafür und die Hyäne <var name="ht"></var>. Wie viel Zeit bräuchten sie, wenn sie das Zebra zusammen fressen?
           </ex>
+
+          <ex nr=8>
+            Zwei Inlineskater treffen sich um 14.55 Uhr. Sie tauschen für 5 Minuten ihre Erfahrungen aus und setzen ihren entgegengesetzten Weg fort. Wie groß ist die Entfernung zwischen ihnen nach <var name="timehs"></var> Stunde und <var name="timems"></var> Minuten, wenn der eine <var name="speed1"></var> km, der andere Inlineskater <var name="speed2"></var> km in der Stunde zurücklegt?
+          </ex>
+
+          <ex nr=9>
+            Ein rechteckiges Grundstück hat eine Größe von <var name="square"></var> m², bei einer Front von <var name="length"></var> m Länge. Wie breit ist das Grundstück?
+          </ex>
         </page>
 
 
@@ -585,6 +593,62 @@
               Die Tiere brauchen zusammen <var name="tmin"></var> Minuten, um das Zebra zu essen
             </div>
           </ex>
+
+
+          <ex nr=8>
+            <div>Gefragt ist nach einer Strecke, die nach einer bestimmten Zeit zur&uuml;ckgelegt wird.</div>
+            <div>
+              <mid>v</mid>
+              <input class=eq>
+              <frac><top>s</top><bottom>t</bottom></frac>
+              <input class="equiv">
+              <mid>s</mid>
+              <input class=eq>
+              <mid>v &middot; t</mid>
+            </div>
+            <div>
+              <mid>t</mid>
+              <input class=eq><mid>1h</mid> <mid>+</mid> <frac><top><var name="timez"></var></top><bottom><var name="timen"></var></bottom></frac><mid>h</mid>
+              <input class=eq><frac><top><var name="timez2"></var></top><bottom><var name="timen"></var></bottom></frac><mid>h</mid>
+            </div>
+            <div>Da sich die Inlineskater voneinander wegbewegen, addieren sich ihre Geschwindigkeiten, wenn man die Strecke zwischen ihnen betrachtet. Genau, wie wenn zwei Autos mit gleicher Geschwindigkeit aufeinander zufahren. Dann ist der Aufprall nämlich auch doppelt so stark, als wenn das Auto gegen eine Wand gefahren wäre, weil sich die Geschwindigkeiten zu einer Gesamtgeschwindigkeit(Aufprallgeschwindigkeit) addieren.
+            </div>
+            <div>
+              <mid>v</mid>
+              <input class=eq><mid><var name="speed1"></var></mid><frac><top>km</top><bottom>h</bottom></frac><mid>+ <var name="speed2"></var></mid><frac><top>km</top><bottom>h</bottom></frac>
+              <input class=eq><mid><var name="speedt"></var></mid><frac><top>km</top><bottom>h</bottom></frac>
+              <input class=eq><mid><var name="speedint"></var></mid><frac><top>km</top><bottom>h</bottom></frac><mid>+</mid>
+              <frac><top><var name="speedz1"></var></top><bottom><var name="speedn"></var></bottom></frac> <frac><top>km</top><bottom>h</bottom></frac>
+              <input class=eq><frac><top><var name="speedz"></var></top><bottom><var name="speedn"></var></bottom></frac><frac><top>km</top><bottom>h</bottom></frac>
+            </div>
+            <div>
+              <mid>s</mid>
+              <input class=eq><frac><top><var name="speedz"></var></top><bottom><var name="speedn"></var></bottom></frac><frac><top>km</top><bottom>h</bottom></frac><mid>&middot;</mid><frac><top><var name="timez2"></var></top><bottom><var name="timen"></var></bottom></frac><mid>h</mid>
+              <input class=eq>
+              <frac><top><var name="base"></var></top><bottom><const name="one"></const></bottom></frac><frac><top>km</top><bottom>h</bottom></frac>
+              <mid>&middot;</mid>
+              <frac><top><var name="timezz"></var></top><bottom><var name="timenn"></var></bottom></frac><mid>h</mid>
+              <input class=eq>
+              <mid><var name="result"></var> km</mid>
+            </div>
+          </ex>
+
+          <ex nr=9>
+            <div>Hier ist die Fläche(A) und eine Seite(a) eines Rechtecks gegeben und gefragt ist die Länge der anderen Seite</div>
+            <div>
+              <mid>A</mid> <input class=eq> <mid>a &middot; b</mid>
+              <input class="equiv">
+              <mid>b</mid> <input class=eq> <frac><top>A</top><bottom>a</bottom></frac>
+            </div>
+            <div>
+              <mid>b</mid> 
+              <input class=eq> <frac><top><var name="square"></var> m²</top><bottom><var name="length"></var> m</bottom></frac>
+              <input class=eq> <mid><var name="result"></var> m &nbsp;&nbsp;&nbsp;&nbsp; (schriftl. Division)</mid>
+            </div>
+
+          </ex>
+
+          <div>&nbsp;</div> <!-- A small space at the end of the page -->
         </page>
       </div> <!-- #content -->
       <div id="loading">

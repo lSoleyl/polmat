@@ -1,12 +1,13 @@
 
-define(['srand', 'smath'], function(srand, smath){
+define(['srand', 'smath', 'lodash'], function(srand, smath, _){
   var data = {}
 
   //Constants
   data.constants = {
     '100km':100, //km
     'workday':8, //h
-    'ms':"3.6"   //kmh -> ms
+    'ms':"3.6",  //kmh -> ms
+    'one':1
   },
 
   //Default values
@@ -114,6 +115,38 @@ define(['srand', 'smath'], function(srand, smath){
 
       tmin:40
 
+    },
+
+    '8': {
+      base:  13,
+      speedz: 39,
+      speedn:  2,
+
+      timehs: 'einer',
+      timems: 20,
+
+      timez: 1,
+      timen: 3,
+      timez2: 4,
+
+      timezz: 2,
+      timenn: 1,
+
+      speed1: 12,
+      speed2: 7.5,
+
+      speedt: 19.5,
+      speedint: 19,
+      speedz1: 1,
+
+      result: 26
+
+    },
+
+    '9' : {
+      'square': 2193,
+      'length': 51,
+      'result': 43
     }
   }
 
@@ -299,8 +332,55 @@ define(['srand', 'smath'], function(srand, smath){
     }
 
 
-
     ex.tmin = smath.div(60*ex.n, ex.z)
+
+
+    //Excercise 8
+    ex = vars['8']
+    
+    var timeValues = [ //Valid minute time values
+      {timems: 12, timez:1, timen:5, timez2:6, timef:2},
+      {timems: 15, timez:1, timen:4, timez2:5, timef:5},
+      {timems: 20, timez:1, timen:3, timez2:4, timef:2},
+      {timems: 40, timez:2, timen:3, timez2:5, timef:5}
+    ]
+
+    var tv = srand(timeValues)
+    _.assign(ex, tv) //Set values
+
+    ex.base = srand({min:11,max:23});
+    if (ex.base % ex.timef == 0) //Ensure, that the generated number cannot be by the factor
+      ex.base += 1
+
+    
+    ex.speedz = ex.base * ex.timen
+    ex.speedn = ex.timef
+
+    ex.speedt = smath.div(ex.speedz, ex.speedn)
+
+    ex.speedint = parseInt(ex.speedt)
+    ex.speedz1 = ex.speedz - (ex.speedint*ex.speedn)
+
+    ex.timezz = smath.div(ex.timez2, ex.timef)
+    ex.timenn = 1 //ex.timen / ex.timen
+
+    ex.result = smath.mul(ex.base, ex.timezz)
+
+
+    var df = srand([3/4, 1/2, 3/5, 4/7])
+
+
+    ex.speed1 = parseInt(parseInt(ex.speedt) * df)
+    ex.speed2 = smath.sub(ex.speedt, ex.speed1)
+
+
+    //Excercise 9
+    ex = vars['9']
+
+    ex.length = srand({min:21, max:45})
+    ex.result = srand({min:41, max:51})
+    ex.square = ex.length * ex.result
+
   }
 
   return data
