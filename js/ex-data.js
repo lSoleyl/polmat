@@ -188,6 +188,12 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
 
 
       months: 2
+    },
+
+    '12': {
+      a:3.4,
+      b:9.2,
+      x:31.28
     }
   }
 
@@ -477,6 +483,14 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
 
     ex.months = smath.div(ex.tzz * 12, ex.tnn)
 
+
+    //Excercise 12
+    ex = vars['12']
+
+    ex.a = smath.div(srand({min:21, max:49}), 10)
+    ex.b = smath.div(srand({min:51, max:99}), 10)
+
+    ex.x = smath.mul(ex.a, ex.b)
   }
 
   return data
