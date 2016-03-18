@@ -68,6 +68,10 @@
           <ex nr=9>
             Ein rechteckiges Grundstück hat eine Größe von <var name="square"></var> m², bei einer Front von <var name="length"></var> m Länge. Wie breit ist das Grundstück?
           </ex>
+
+          <ex nr=10>
+            Von allen Aufgaben ist <var name="einfach"></var> einfach und <var name="schwer"></var> schwer. Wie viel Prozent der Aufgaben sind weder schwer noch leicht?
+          </ex>
         </page>
 
 
@@ -646,6 +650,30 @@
               <input class=eq> <mid><var name="result"></var> m &nbsp;&nbsp;&nbsp;&nbsp; (schriftl. Division)</mid>
             </div>
 
+          </ex>
+
+          <ex nr=10>
+            <div>Anzahl der Aufgaben, die einfach oder schwer sind: </div>
+            <div>
+              <mid>N<sub>es</sub></mid>
+              <input class=eq> <mid>N<sub>e</sub> + N<sub>s</sub></mid>
+              <input class=eq> <frac><top><const name="one"></const></top><bottom><var name="en"></var></bottom></frac> <mid>+</mid> <frac><top><const name="one"></const></top><bottom><var name="sn"></var></bottom></frac>
+              <input class=eq> <frac><top><var name="ez"></var></top><bottom><var name="nn"></var></bottom></frac> <mid>+</mid> <frac><top><var name="sz"></var></top><bottom><var name="nn"></var></bottom></frac>
+              <input class=eq> <frac><top><var name="zz"></var></top><bottom><var name="nn"></var></bottom></frac>
+              <ifnot name="div" value=1>
+                <input class=eq> <frac><top><var name="szz"></var></top><bottom><var name="snn"></var></bottom></frac>
+              </ifnot>
+            </div>
+            <div>
+              Der Rest, der nun weder einfach, noch leicht ist, berechnet sich wie folgt. (1 = 100% = Alle Aufgaben)
+            </div>
+            <div>
+              <mid> 1 - N<sub>es</sub></mid>
+              <input class=eq><mid> 1 - </mid> <frac><top><var name="szz"></var></top><bottom><var name="snn"></var></bottom></frac>
+              <input class=eq><frac><top><var name="subzz"></var></top><bottom><var name="snn"></var></bottom></frac>
+              <input class=eq><frac><top><var name="subzz"></var></top><bottom><var name="snn"></var></bottom></frac> <mid>&middot; 100%</mid>
+              <input class=eq><mid><var name="result"></var>%</mid>
+            </div>
           </ex>
 
           <div>&nbsp;</div> <!-- A small space at the end of the page -->

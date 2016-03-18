@@ -147,11 +147,36 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
       'square': 2193,
       'length': 51,
       'result': 43
+    },
+
+
+    '10' : {
+      einfach:'ein Drittel',
+      schwer:'ein Sechstel',
+
+      en: 3,
+      sn: 6,
+
+      nn: 6, //common denominator
+
+      ez: 2,
+      sz: 1,
+
+      zz: 3, //sum (zz/nn)
+
+      szz: 1, //simplified
+      snn: 2, 
+
+      div: 3, //divisor for simplified form
+
+      subzz: 1, //numerator of subtraction 1 - (szz/snn)
+
+      result: 50 //percent
     }
   }
 
   var secondLiterals = ["null", "eine", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf"]
-  var fractionList = [ undefined, undefined, "die Hälfte", "ein Drittel", "ein Viertel", "ein Fünftel" ]
+  var fractionList = [ undefined, undefined, "die Hälfte", "ein Drittel", "ein Viertel", "ein Fünftel", "ein Sechstel", "ein Siebtel", "ein Achtel", "ein Neuntel", "ein Zehntel"]
 
   function gcd(n,m) {
     var a = Math.max(n,m)
@@ -162,6 +187,8 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
 
     return gcd(m, n % m)
   }
+
+  function kgv(n,m) { return Math.abs(n*m) / gcd(n,m) }
 
   function makeLiteral(n) {
     if (n <= 12)
@@ -380,6 +407,40 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
     ex.length = srand({min:21, max:45})
     ex.result = srand({min:41, max:51})
     ex.square = ex.length * ex.result
+
+
+    //Excercise 10
+    ex = vars['10']
+
+    var goodValues = [ //Predetermined good values, which don't make the calculation too complicated
+      {en:2, sn:4},
+      {en:2, sn:5},
+      {en:2, sn:8}, 
+      {en:3, sn:6},
+      {en:4, sn:5},
+      {en:4, sn:8},
+      {en:5, sn:4},
+      {en:5, sn:8}]
+
+    _.assign(ex, srand(goodValues))
+
+    ex.einfach = fractionList[ex.en]
+    ex.schwer = fractionList[ex.sn]
+
+    ex.nn = kgv(ex.en, ex.sn)
+
+    ex.ez = ex.nn / ex.en
+    ex.sz = ex.nn / ex.sn
+
+    ex.zz = ex.ez + ex.sz
+
+    ex.div = gcd(ex.zz, ex.nn)
+    ex.szz = ex.zz / ex.div
+    ex.snn = ex.nn / ex.div
+      
+    ex.subzz = ex.snn - ex.szz
+
+    ex.result = smath.div(ex.subzz * 100, ex.snn)
 
   }
 
