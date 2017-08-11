@@ -80,6 +80,10 @@
           <ex nr=12>
             Teilt man eine Zahl x durch <var name="a"></var>, erhält man als Ergebnis <var name="b"></var>. Wie muss die Zahl x lauten?
           </ex>
+
+          <ex nr=13>
+            Ein Trinkwasservorrat reicht für <var name="p1"></var> Personen <var name="d1"></var> Tage aus. Wie viele Tage können <var name="p2"></var> Personen davon trinken?
+          </ex>
         </page>
 
 
@@ -491,7 +495,7 @@
 
           <ex nr=7>
             <div>
-              Bei dieser Aufgabe darf man nicht den Fehler machen, einfach die Zeiten aufzuaddieren, da dadurch, dass mehr Tiere essen das eine Zebra schneller aufgegessen wird. Man muss stattdessen die Fressgeschwindigkeit der einzelnen Tiere (in Zebras pro Stunde) betrachten und aufaddieren.
+              Bei dieser Aufgabe darf man nicht den Fehler machen, einfach die Zeiten aufzuaddieren, da dadurch, dass mehr Tiere essen, das eine Zebra schneller aufgegessen wird. Man muss stattdessen die Fressgeschwindigkeit der einzelnen Tiere (in Zebras pro Stunde) betrachten und aufaddieren.
             </div>
             <div>
               <mid>v<sub>Löwe</sub></mid>
@@ -703,6 +707,27 @@
               <input class="equiv"><mid>x</mid> <input class=eq> <mid><var name="b"></var> &middot; <var name="a"></var></var></mid>
               <input class=eq><mid><var name="x"></var> &nbsp;&nbsp;&nbsp;&nbsp;(schriftl. Multiplikation)</mid>
             </div>
+          </ex>
+
+          <ex nr="13">
+            <div class="right">
+              <mid><var name="p1"></var> Personen &middot; <var name="d1"></var> Tage</mid>
+              <input class="eq">
+              <mid><var name="p2"></var> Personen &middot; x Tage</mid>
+            </div>
+            <div>
+              <input class="equiv"><mid>x Tage</mid> <input class="eq"> 
+              <frac>
+                <top><var name="p1"></var> Personen &middot; <var name="d1"></var> Tage</top>
+                <bottom><var name="p2"></var> Personen</bottom>
+              </frac>
+              <input class="eq">
+              <mid><var name="f"></var> &middot; <var name="d1"></var> Tage</mid>
+              <input class="eq">
+              <mid><var name="d2"></var> Tage</mid>
+            </div>
+
+
           </ex>
 
           <div>&nbsp;</div> <!-- A small space at the end of the page -->

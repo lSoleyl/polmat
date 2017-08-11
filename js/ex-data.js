@@ -194,6 +194,14 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
       a:3.4,
       b:9.2,
       x:31.28
+    },
+
+    '13': {
+      p1: 12,
+      d1: 16,
+      p2: 6,
+      d2: 32,
+      f:  2
     }
   }
 
@@ -491,6 +499,17 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
     ex.b = smath.div(srand({min:51, max:99}), 10)
 
     ex.x = smath.mul(ex.a, ex.b)
+
+    //Excercise 13
+    ex = vars['13']
+
+    ex.d1 = srand({min:10, max:25})
+    ex.f = srand({min:2, max:6})
+    ex.d2 = ex.d1 * ex.f
+
+    ex.p2 = srand({min:3, max:6})
+    ex.p1 = ex.p2 * ex.f
+
   }
 
   return data
