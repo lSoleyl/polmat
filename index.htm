@@ -84,6 +84,10 @@
           <ex nr=13>
             Ein Trinkwasservorrat reicht für <var name="p1"></var> Personen <var name="d1"></var> Tage aus. Wie viele Tage können <var name="p2"></var> Personen davon trinken?
           </ex>
+
+          <ex nr=14>
+            Eine Steinsetzerfirma benötigt für einen Plat mit <var name="area"></var> m² Fläche Pflastersteine. Die gängige Größe beträgt <var name="x"></var> &middot; <var name="y"></var> cm. Wie viele Steine müssen bestellt werden?
+          </ex>
         </page>
 
 
@@ -726,8 +730,51 @@
               <input class="eq">
               <mid><var name="d2"></var> Tage</mid>
             </div>
+          </ex>
 
+          <ex nr="14">
+            <div>
+              Es gilt: 1m² = <const name="cm2m2"></const>cm²
+            </div>
+            <div>
+              <mid>A<sub>Stein</sub></mid>
+              <input class="eq">
+              <mid><var name="x"></var>cm &middot; <var name="y"></var>cm</mid>
+              <input class="eq">
+              <mid><var name="xy"></var>cm²</mid>
+              <input class="eq">
+              <frac>
+                <top><var name="xy"></var></top>
+                <bottom><const name="cm2m2"></const></bottom>
+              </frac>
+              <mid>m²</mid>
+              <input class="eq">
+              <frac>
+                <top><var name="xyz"></var></top>
+                <bottom><var name="xyn"></var></bottom>
+              </frac>
+              <mid>m²</mid>
+            </div>
+            <div>
+              <mid>N<sub>Steine</sub></mid>
+              <input class="eq">
+              <frac>
+                <top>A<sub>ges</sub></top>
+                <bottom>A<sub>Stein</sub></bottom>
+              </frac>
+              <input class="eq">
+              <mid><var name="area"></var>m² : </mid>
+              <frac>
+                <top><var name="xyz"></var></top>
+                <bottom><var name="xyn"></var></bottom>
+              </frac>
+              <mid>m²</mid>
+              <input class="eq">
+              <mid><var name="area"></var> &middot; <var name="xyn"></var></mid>
+              <input class="eq">
+              <mid><var name="ges"></var></mid>
 
+            </div>
           </ex>
 
           <div>&nbsp;</div> <!-- A small space at the end of the page -->

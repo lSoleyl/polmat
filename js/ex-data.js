@@ -8,7 +8,8 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
     'workday':8, //h
     'ms':"3.6",  //kmh -> ms
     'one':1,
-    'montspy':12 //months per year
+    'montspy':12, //months per year
+    'cm2m2':10000 //cm² per m²
   },
 
   //Default values
@@ -202,7 +203,18 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
       p2: 6,
       d2: 32,
       f:  2
+    },
+
+    '14': {
+      area: 500,
+      x: 10, 
+      y: 20,
+      xy: 200,
+      xyz: 1,
+      xyn: 50,
+      ges: 25000
     }
+
   }
 
   var secondLiterals = ["null", "eine", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf"]
@@ -509,6 +521,21 @@ define(['srand', 'smath', 'lodash'], function(srand, smath, _){
 
     ex.p2 = srand({min:3, max:6})
     ex.p1 = ex.p2 * ex.f
+
+    //Excercise 14
+    ex = vars['14']
+
+    ex.x = srand([5,10,20,25])
+    ex.y = srand([5,10,20,25])
+    ex.area = srand({min:100, max:900, step:100});
+
+    ex.xy = ex.x * ex.y
+
+    var teiler = gcd(ex.xy, c.cm2m2)
+    ex.xyz = ex.xy / teiler
+    ex.xyn = c.cm2m2 / teiler
+
+    ex.ges = ex.xyn * ex.area    
 
   }
 
