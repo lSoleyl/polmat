@@ -2,4 +2,4 @@
 
 ## Textaufgaben
 
-Aufgaben und Lösungen (inkl. Lösungswege) [hier](https://rawgit.com/lSoleyl/polmat/master/index.htm)
+Aufgaben und Lösungen (inkl. Lösungswege) [hier](https://rawcdn.githack.com/lSoleyl/polmat/master/index.htm)
